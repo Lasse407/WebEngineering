@@ -84,7 +84,6 @@
     height: auto;
     margin: 2%;
     background-color: white;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -92,13 +91,10 @@
 
 .bottomBar-blog-content--date {
     margin: 4% 4% 0% 4%;
-
     font-size: 22px;
-
 }
 
 .bottomBar-blog-content--headline {
-
     margin: 1% 4% 0% 4%;
     font-size: 40px;
     font-weight: 800;

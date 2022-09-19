@@ -8,10 +8,11 @@
             <div class="m">HS FL Dashboard <br> Administration
                 <div>
                     <div class="label--input">
-                        <input type="email" id="email" name="email" placeholder="E-Mail">
+                        <input type="email" id="email" name="email" placeholder="E-Mail" v-model="email">
+                        {{email}}
                     </div>
                     <div class="label--input">
-                        <input type="password" id="password" name="password" placeholder="Passwort">
+                        <input type="password" id="password" name="password" placeholder="Passwort" v-model="passwort">
                     </div>
                     <div>
                         <input type="submit" value="Login">
@@ -30,7 +31,14 @@
 </template>
 
 <script>
-
+export default {
+    data() {
+        return {
+            email: '',
+            passwort: '',
+        }
+    }
+}
 </script>
 
 <style>
@@ -65,7 +73,6 @@ body {
     width: 50%;
     height: 100vh;
     background-color: #F3621B;
-    z-index: -1;
 
     align-content: center;
     align-items: center;
