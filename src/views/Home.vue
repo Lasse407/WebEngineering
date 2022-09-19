@@ -7,13 +7,11 @@
         <div class="half">
             <div class="m">HS FL Dashboard <br> Administration</div>
             <div class="button--container">
-                <button class="button button--white">Login</button>
-                <button class="button button--purple">Registrieren</button>
+                <button class="button button--white" href="./Login.vue" link="./Login.vue">Login</button>
+                <button class="button button--purple" href="./Register.vue">Registrieren</button>
             </div>
         </div>
     </div>
-
-
 </template>
 
 <script>
