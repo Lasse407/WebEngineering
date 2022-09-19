@@ -106,21 +106,21 @@
 
 .bottomBar-blog-content--subline {
     margin: 1% 4% 0% 4%;
-    font-size: 24px;
+    font-size: 1.4rem;
     font-weight: 600;
     text-align: left;
 }
 
 .bottomBar-blog-content--text {
     margin: 1% 4% 0% 4%;
-    font-size: 20px;
+    font-size: 1.2rem;
     text-align: justify;
     white-space: normal;
 }
 
 .bottomBar-blog-content--author {
     margin: 1% 4% 0% 4%;
-    font-size: 18px;
+    font-size: 1rem;
     font-style: italic;
 }
 

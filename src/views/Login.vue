@@ -40,8 +40,13 @@ body {
     font-family: 'Roboto Slab', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+}
+
+.text-centered {
+    text-align: center;
 }
 
 .main {
@@ -61,8 +66,6 @@ body {
     height: 100vh;
     background-color: #F3621B;
     z-index: -1;
-    margin-right: 0px;
-    margin-left: auto;
 
     align-content: center;
     align-items: center;
@@ -78,7 +81,7 @@ body {
 
 .button--container {
     width: 50%;
-    margin-top: 100px;
+    margin-top: 3rem;
 
     display: flex;
     align-content: center;
@@ -89,10 +92,8 @@ body {
 .button {
     border-radius: 16px;
     background-color: grey;
-    width: 200px;
-    height: 60px;
-    font-size: 24px;
-    padding: 10px;
+    font-size: 1rem;
+    padding: 1rem;
     border: 0px;
     color: black;
 }

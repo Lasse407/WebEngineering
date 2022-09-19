@@ -10,6 +10,13 @@
         <div class="currentTime"> 16:30 </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col col-1-of-3">Links</div>
+            <div class="col col-1-of-3">Mitte</div>
+            <div class="col col-1-of-3">Rechts</div>
+        </div>
+    </div>
     <div class="bottomBar">
         <div class="bottomBar--container1">
             <div class="bottomBar--Content">Hochschulnews

@@ -1,9 +1,7 @@
 <template>
     <div class="topBar--admin">
         <div>
-            <a href="./">
-                <img class="topBar--logo" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
-            </a>
+            <img class="topBar--logo" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
         </div>
         <div>
             <h2> Administration <br> C-Gebäude Infoscreens</h2>
@@ -81,14 +79,14 @@ h2 {
     align-items: center;
     justify-content: center;
     height: 7vh;
-    width:100%;
+    width: 100%;
     font-size: 25px;
     border-bottom-width: 2px;
     border-bottom-color: #f3f6f4;
     border-bottom-style: solid;
 }
 
-.sidebar--content:hover{
+.sidebar--content:hover {
     background-color: #f3f6f4;
 }
 

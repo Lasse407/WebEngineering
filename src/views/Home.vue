@@ -7,8 +7,8 @@
         <div class="half">
             <div class="m">HS FL Dashboard <br> Administration</div>
             <div class="button--container">
-                    <button class="button button--white">Login</button>
-                    <button class="button button--purple">Registrieren</button>             
+                    <router-link class="button button--white" to="login">Login</router-link>
+                    <router-link class="button button--purple" to="register">Registrieren</router-link>             
             </div>
         </div>
     </div>
@@ -21,13 +21,6 @@
 <style>
 @import '~/node_modules/reset-css/reset.css';
 
-body {
-    font-family: 'Roboto Slab', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
 
 .main {
     display: flex;
@@ -50,7 +43,6 @@ body {
     width: 50%;
     height: 100vh;
     background-color: #F3621B;
-    z-index: -1;
     margin-right: 0px;
     margin-left: auto;
 
