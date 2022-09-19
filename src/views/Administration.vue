@@ -1,7 +1,9 @@
 <template>
     <div class="topBar--admin">
         <div>
-            <img class="topBar--logo" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            <a href="./">
+                <img class="topBar--logo" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            </a>
         </div>
         <div>
             <h2> Administration <br> C-Gebäude Infoscreens</h2>
@@ -18,8 +20,9 @@
             <div class="sidebar--content">Veranstaltungen</div>
             <div class="sidebar--content">Nachrichten</div>
             <div class="sidebar--content">User</div>
+            <div class="sidebar--content">Logout</div>
         </div>
-        <div class="contentBackground--admin">Content</div>
+        <div class="contentBackground--admin"></div>
     </div>
 
 </template>
@@ -31,60 +34,77 @@
 <style>
 @import '~/node_modules/reset-css/reset.css';
 
-h2{
+h2 {
     font-size: 20px;
 }
 
-.topBar--admin{
+.topBar--admin {
 
-    display:flex;
+    display: flex;
     background-color: #F3621B;
     height: 5vh;
     width: 100%;
-    color:white;
+    color: white;
 
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
 
-.topBar--logo{
-    height:50px;
+.topBar--logo {
+    height: 50px;
     border-radius: 25px;
     margin-left: 13vh;
+    box-shadow: 0px 0px 6px 0px white;
 }
 
-.topBar--logout{
+.topBar--logout {
     margin-right: 5vh;
 }
 
-.bottomBar--admin{
-    display:flex;
+.bottomBar--admin {
+    display: flex;
     background-color: #f2f2f2;
-    height:95vh;
-    width:100%;
+    height: 95vh;
+    width: 100%;
 }
 
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     width: 30vh;
     background-color: white;
 }
 
-.sidebar--content{
-    height: 5vh;
+.sidebar--content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    width:100%;
+    font-size: 25px;
+    border-bottom-width: 2px;
+    border-bottom-color: #f3f6f4;
+    border-bottom-style: solid;
 }
 
-.sidebar--content--loginInfo{
-
-}
-
-.contentBackground--admin{
-    display:flex;
-    width:auto;
+.sidebar--content:hover{
+    background-color: #f3f6f4;
 }
 
 
+.sidebar--content--loginInfo {
+    border-style: solid;
+    border-color: grey;
+    border-bottom-width: 2px;
+
+    margin-top: 10px;
+    padding-bottom: 15px;
+    line-height: 25px;
+}
+
+.contentBackground--admin {
+    display: flex;
+    width: auto;
+}
 </style>

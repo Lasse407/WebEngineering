@@ -7,8 +7,8 @@
         <div class="half">
             <div class="m">HS FL Dashboard <br> Administration</div>
             <div class="button--container">
-                <button class="button button--white" href="./Login.vue" link="./Login.vue">Login</button>
-                <button class="button button--purple" href="./Register.vue">Registrieren</button>
+                    <button class="button button--white">Login</button>
+                    <button class="button button--purple">Registrieren</button>             
             </div>
         </div>
     </div>
@@ -33,9 +33,16 @@ body {
     display: flex;
 }
 
-.logoMain {
-    height: 800px;
-    margin: 25% 25% 25% 25%;
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height:100vh;
+}
+
+.logoMain{
+    height:65%;
 }
 
 .half {
@@ -78,6 +85,7 @@ body {
     padding: 10px;
     border: 0px;
     color: black;
+    cursor: pointer;
 }
 
 .button--purple {

@@ -18,10 +18,10 @@
                     </div>
                     <div>
                         <FormFootnote class="footnote">
-                        <p style="margin-top: 20px;">Schon einen Account?
-                            <router-link to="login">Jetzt Einloggen.</router-link>
-                        </p>
-                    </FormFootnote>
+                            <p style="margin-top: 20px;">Schon einen Account?
+                                <router-link to="login">Jetzt Einloggen.</router-link>
+                            </p>
+                        </FormFootnote>
                     </div>
                 </div>
             </div>
@@ -37,18 +37,12 @@
 <style>
 @import '~/node_modules/reset-css/reset.css';
 
-body {
-    font-family: 'Roboto Slab', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
+
 
 input {
     border-radius: 16px;
     background-color: white;
-    width: 50%;
+    width: 60%;
     height: 25px;
     font-size: 24px;
     margin-top: 55px;
@@ -58,12 +52,12 @@ input {
     box-shadow: 0px 0px 8px 0px white
 }
 
-.footnote{
+.footnote {
     font-size: 15px;
 }
 
 input[type=submit] {
-    width: 40%;
+    width: 62%;
     height: 45px;
     background-color: #262481;
     box-shadow: 0px 0px 8px 0px #262481;
@@ -76,79 +70,4 @@ input[type=submit] {
 
 
 
-
-.label--input {
-    display: flex;
-    justify-content: center;
-}
-
-.main {
-    display: flex;
-}
-
-.logoMain {
-    height: 800px;
-    margin: 25% 25% 25% 25%;
-}
-
-.input-container {
-    display: flex;
-    flex-flow: row;
-    margin-top: 50px;
-    width: 500px;
-}
-
-.half {
-    display: flex;
-    width: 50%;
-    height: 100vh;
-    background-color: #F3621B;
-    z-index: -1;
-    margin-right: 0px;
-    margin-left: auto;
-
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.m {
-    font-family: 'Roboto Slab', serif;
-    font-size: 100px;
-    color: white;
-}
-
-.button--container {
-    width: 50%;
-    margin-top: 100px;
-
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.button {
-    border-radius: 16px;
-    background-color: grey;
-    width: 200px;
-    height: 60px;
-    font-size: 24px;
-    padding: 10px;
-    border: 0px;
-    color: black;
-}
-
-.button--purple {
-    background-color: #262481;
-    box-shadow: 0px 0px 8px 0px #262481;
-    color: white;
-}
-
-.button--white {
-    background-color: white;
-    box-shadow: 0px 0px 8px 0px white;
-    color: #262481;
-}
 </style>

@@ -44,47 +44,8 @@ body {
     color: #2c3e50;
 }
 
-input {
-    border-radius: 16px;
-    background-color: white;
-    width: 50%;
-    height: 25px;
-    font-size: 24px;
-    margin-top: 50px;
-    padding: 10px;
-    border: 0px;
-    color: black;
-    box-shadow: 0px 0px 8px 0px white
-}
-
-.footnote {
-    font-size: 15px;
-}
-
-input[type=submit] {
-    width: 40%;
-    height: 45px;
-    background-color: #262481;
-    box-shadow: 0px 0px 8px 0px #262481;
-    color: white;
-    padding: 0px 0px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-}
-
-.label--input {
-    display: flex;
-    justify-content: center;
-}
-
 .main {
     display: flex;
-}
-
-.logoMain {
-    height: 800px;
-    margin: 25% 25% 25% 25%;
 }
 
 .input-container {
