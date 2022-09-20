@@ -3,7 +3,7 @@
         <div>
             <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
         </div>
-        <div>
+        <div class="centered">
             <h1> Blog</h1>
             <div class="topBar--date"> 01.01.2022</div>
         </div>
@@ -57,7 +57,7 @@
             <div class="bottomBar-blog-content--author"> -- Max Mustermann </div>
         </div>
         <div class="bottomBar-blog-socialmedia">
-            Twitter-Feed HS Flensburg
+            <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"> </a>
         </div>
 
     </div>
@@ -65,11 +65,24 @@
 </template>
 
 <script>
-
+export default {
+    mounted() {
+        const twitterScript = document.createElement('script');
+        twitterScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+        twitterScript.setAttribute('async', 'async');
+        document.head.appendChild(twitterScript);
+    },
+}
 </script>
 
 <style>
 @import '~/node_modules/reset-css/reset.css';
+
+
+.twitter-timeline {
+    width: 100% !important;
+    height: 500px !important;
+}
 
 .bottomBar--blog {
     display: flex;

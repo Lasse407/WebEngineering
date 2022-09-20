@@ -15,13 +15,43 @@ const routes = [
         path: '/administration',
         name: 'administration',
         redirect: {
-            name: 'dashboard',
+            name: 'admin/vorlesungsplan',
         }
     },
     {
-        path: '/administration/dashboard',
-        name: 'dashboard',
-        component: import('../views/Administration.vue')
+        path: '/administration/vorlesungsplan',
+        name: 'admin/vorlesungsplan',
+        component: import('../views/Administration/Administration_Vorlesungsplan.vue')
+    },
+    {
+        path: '/administration/social-media',
+        name: 'admin/social-media',
+        component: import('../views/Administration/Administration_Social-Media.vue')
+    },
+    {
+        path: '/administration/news',
+        name: 'admin/news',
+        component: import('../views/Administration/Administration_News.vue')
+    },
+    {
+        path: '/administration/screens',
+        name: 'admin/screens',
+        component: import('../views/Administration/Administration_Screens.vue')
+    },
+    {
+        path: '/administration/veranstaltungen',
+        name: 'admin/veranstaltungen',
+        component: import('../views/Administration/Administration_Veranstaltungen.vue')
+    },
+    {
+        path: '/administration/blog',
+        name: 'admin/blog',
+        component: import('../views/Administration/Administration_Blog.vue')
+    },
+    {
+        path: '/administration/user',
+        name: 'admin/user',
+        component: import('../views/Administration/Administration_User.vue')
     },
     {
         path: '/aktuelles',

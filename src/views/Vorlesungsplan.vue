@@ -3,7 +3,7 @@
         <div>
             <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
         </div>
-        <div>
+        <div class="centered">
             <h1> Vorlesungsplan C-Gebäude</h1>
             <div class="topBar--date"> 01.01.2022</div>
         </div>
@@ -141,13 +141,13 @@
                     </div>
                     <div class="col col--1-of-3">
                         <div class="forecast forecast--noon">
-                            <h5>Morgens</h5>
+                            <h5>Mittags</h5>
                             <span class="forecast__degree">14°</span>
                         </div>
                     </div>
                     <div class="col col--1-of-3">
                         <div class="forecast forecast--evening">
-                            <h5>Morgens</h5>
+                            <h5>Abends</h5>
                             <span class="forecast__degree">14°</span>
                         </div>
                     </div>
@@ -227,8 +227,28 @@ h2 {
     width: 70%;
 }
 
+.col--50 {
+    width: calc(50% - 2rem);
+}
+
+.col--40 {
+    width: calc(40% - 2rem);
+}
+
+.col--35 {
+    width: calc(35% - 2rem);
+}
+
 .col--30 {
     width: calc(30% - 2rem);
+}
+
+.col--25 {
+    width: calc(25% - 2rem);
+}
+
+.col--15 {
+    width: calc(15% - 2rem);
 }
 
 .col--1-of-3 {
