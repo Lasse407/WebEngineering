@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -44,40 +44,46 @@
                     <div class="col col--40 article--admin">
                         <h3>Artikel 1 bearbeiten:</h3>
                         <div class="article--description--admin">
-                            Datum <input class="input--article--date" type="date" placeholder="Datum">
+                            Datum <input class="input--article--date" type="date" placeholder="Datum"
+                                vue-model="article1Date">
                         </div>
                         <div class="article--description--admin">
-                            Überschrift<input class="input--article--header" type="text" placeholder="Headline">
+                            Überschrift<input class="input--article--header" type="text" placeholder="Headline"
+                                vue-model="article1Header">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article1Content">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 2 bearbeiten:</h3>
                         <div class="article--description--admin">
-                            Datum <input class="input--article--date" type="date" placeholder="Datum">
+                            Datum <input class="input--article--date" type="date" placeholder="Datum"
+                                vue-model="article2Date">
                         </div>
                         <div class="article--description--admin">
-                            Überschrift<input class="input--article--header" type="text" placeholder="Headline">
+                            Überschrift<input class="input--article--header" type="text" placeholder="Headline"
+                                vue-model="article2Header">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article2Content">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 3 bearbeiten:</h3>
                         <div class="article--description--admin">
-                            Datum <input class="input--article--date" type="date" placeholder="Datum">
+                            Datum <input class="input--article--date" type="date" placeholder="Datum"
+                                vue-model="article3Date">
                         </div>
                         <div class="article--description--admin">
-                            Überschrift<input class="input--article--header" type="text" placeholder="Headline">
+                            Überschrift<input class="input--article--header" type="text" placeholder="Headline"
+                                vue-model="article3Header">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article3Content">
                         </div>
                     </div>
                 </div>
@@ -88,7 +94,23 @@
 </template>
 
 <script>
+export default {
+    data() {
+        return {
+            article1Date: '',
+            article1Header: '',
+            article1Content: '',
 
+            article2Date: '',
+            article2Header: '',
+            article2Content: '',
+
+            article3Date: '',
+            article3Header: '',
+            article3Content: '',
+        }
+    }
+}
 </script>
 
 <style>

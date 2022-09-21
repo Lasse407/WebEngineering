@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -60,19 +60,22 @@
                             <p> 8-10 </p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName1">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName2">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName3">
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent1">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent2">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent3">
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum1">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum2">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum3">
                         </div>
                     </div>
                     <div class="table-row">
@@ -80,19 +83,22 @@
                             <p>10-12</p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName4">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName5">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName6">
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent4">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent5">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent6">
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum4">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum5">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum6">
                         </div>
                     </div>
                     <div class="table-row">
@@ -100,19 +106,22 @@
                             <p>12-14</p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName7">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName8">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName9">
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent7">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent8">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent9">
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum7">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum8">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum9">
                         </div>
                     </div>
                     <div class="table-row">
@@ -120,19 +129,22 @@
                             <p>14-16</p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName10">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName11">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName12">
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent10">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent11">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent11">
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum10">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum11">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum12">
                         </div>
                     </div>
                     <div class="table-row">
@@ -140,19 +152,22 @@
                             <p>16-18</p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName13">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName14">
+                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
+                                vue-model="vlPlanName15">
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
-                            <input type="text" placeholder="Dozent" class="input--table">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent13">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent14">
+                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlanDozent15">
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum13">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum14">
+                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlanRaum15">
                         </div>
                     </div>
                 </div>
@@ -163,7 +178,71 @@
 </template>
 
 <script>
+export default {
+    data() {
+        return {
+            vlPlanName1: 'Default',
+            vlPlanDozent1: 'Max Mustermann',
+            vlPlanRaum1: '111',
 
+            vlPlanName2: 'Default',
+            vlPlanDozent2: 'Max Mustermann',
+            vlPlanRaum2: '111',
+
+            vlPlanName3: 'Default',
+            vlPlanDozent3: 'Max Mustermann',
+            vlPlanRaum3: '111',
+
+            vlPlanName4: 'Default',
+            vlPlanDozent4: 'Max Mustermann',
+            vlPlanRaum4: '111',
+
+            vlPlanName5: 'Default',
+            vlPlanDozent5: 'Max Mustermann',
+            vlPlanRaum5: '111',
+
+            vlPlanName6: 'Default',
+            vlPlanDozent6: 'Max Mustermann',
+            vlPlanRaum6: '111',
+
+            vlPlanName7: 'Default',
+            vlPlanDozent7: 'Max Mustermann',
+            vlPlanRaum7: '111',
+
+            vlPlanName8: 'Default',
+            vlPlanDozent8: 'Max Mustermann',
+            vlPlanRaum8: '111',
+
+            vlPlanName9: 'Default',
+            vlPlanDozent9: 'Max Mustermann',
+            vlPlanRaum9: '111',
+
+            vlPlanName10: 'Default',
+            vlPlanDozent10: 'Max Mustermann',
+            vlPlanRaum10: '111',
+
+            vlPlanName11: 'Default',
+            vlPlanDozent11: 'Max Mustermann',
+            vlPlanRaum11: '111',
+
+            vlPlanName12: 'Default',
+            vlPlanDozent12: 'Max Mustermann',
+            vlPlanRaum12: '111',
+
+            vlPlanName13: 'Default',
+            vlPlanDozent13: 'Max Mustermann',
+            vlPlanRaum13: '111',
+
+            vlPlanName14: 'Default',
+            vlPlanDozent14: 'Max Mustermann',
+            vlPlanRaum14: '111',
+
+            vlPlanName15: 'Default',
+            vlPlanDozent15: 'Max Mustermann',
+            vlPlanRaum15: '111',
+        }
+    }
+}
 </script>
 
 <style>
@@ -191,13 +270,6 @@ h2 {
 
 .current {
     background-color: #f3f6f4;
-}
-
-.topBar--logout {
-    margin-right: 1rem;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
 }
 
 .admin-link {

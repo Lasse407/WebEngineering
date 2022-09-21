@@ -1,13 +1,15 @@
 <template>
     <div class="topBar--main">
         <div>
-            <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            <a href="./Administration">
+                <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            </a>
         </div>
         <div class="centered">
             <h1> Blog</h1>
-            <div class="topBar--date"> 01.01.2022</div>
+            <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime"> 16:30 </div>
+        <div class="currentTime" id="timeTf"> </div>
     </div>
     <div class="bottomBar--blog">
         <div class="bottomBar-blog-content">
@@ -73,6 +75,22 @@ export default {
         document.head.appendChild(twitterScript);
     },
 }
+
+function showTime() {
+
+    var jetzt = new Date();
+
+    var time = jetzt.toLocaleTimeString();
+
+    var date = jetzt.toLocaleDateString();
+
+    document.getElementById('timeTf').textContent = time;
+
+    document.getElementById('dateTf').textContent = date;
+
+}
+window.setInterval(showTime, 1000);
+
 </script>
 
 <style>

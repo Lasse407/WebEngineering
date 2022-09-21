@@ -1,13 +1,15 @@
 <template>
     <div class="topBar--main">
         <div>
-            <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            <a href="./Administration">
+                <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            </a>
         </div>
         <div class="centered">
             <h1> Vorlesungsplan C-Gebäude</h1>
-            <div class="topBar--date"> 01.01.2022</div>
+            <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime"> 16:30 </div>
+        <div class="currentTime" id="timeTf"> </div>
     </div>
     <div class="container">
         <div class="row">
@@ -50,7 +52,7 @@
                         </div>
                         <div class="table-row">
                             <div class="table-col table-col--20">
-                                <p>8-10</p>
+                                <p>10-12</p>
                             </div>
                             <div class="table-col table-col--30">
                                 <p>Web Engineering</p>
@@ -70,7 +72,7 @@
                         </div>
                         <div class="table-row">
                             <div class="table-col table-col--20">
-                                <p>8-10</p>
+                                <p>12-14</p>
                             </div>
                             <div class="table-col table-col--30">
                                 <p>Web Engineering</p>
@@ -90,7 +92,7 @@
                         </div>
                         <div class="table-row">
                             <div class="table-col table-col--20">
-                                <p>8-10</p>
+                                <p>14-16</p>
                             </div>
                             <div class="table-col table-col--30">
                                 <p>Web Engineering</p>
@@ -110,7 +112,7 @@
                         </div>
                         <div class="table-row">
                             <div class="table-col table-col--20">
-                                <p>8-10</p>
+                                <p>16-18</p>
                             </div>
                             <div class="table-col table-col--30">
                                 <p>Web Engineering</p>
@@ -185,6 +187,18 @@
                                 </small>
                                 <h4 class="events__item-title">Event 5</h4>
                             </div>
+                            <div class="events__item">
+                                <small class="events__item-date">
+                                    01.05.2023
+                                </small>
+                                <h4 class="events__item-title">Event 6</h4>
+                            </div>
+                            <div class="events__item">
+                                <small class="events__item-date">
+                                    01.05.2023
+                                </small>
+                                <h4 class="events__item-title">Event 7</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -195,6 +209,22 @@
 </template>
 
 <script>
+
+
+function showTime() {
+
+    var jetzt = new Date();
+
+    var time = jetzt.toLocaleTimeString();
+
+    var date = jetzt.toLocaleDateString();
+
+    document.getElementById('timeTf').textContent = time;
+
+    document.getElementById('dateTf').textContent = date;
+
+}
+window.setInterval(showTime, 1000);
 
 </script>
 
@@ -251,6 +281,10 @@ h2 {
     width: calc(15% - 2rem);
 }
 
+.col--1-of-1 {
+    width: calc(100% / 1 - 0.5rem);
+}
+
 .col--1-of-3 {
     width: calc(100% / 3 - 0.5rem);
 }
@@ -259,7 +293,7 @@ h2 {
     display: flex;
     flex-direction: column;
     background-color: white;
-
+    height: auto;
 }
 
 .weather {
@@ -270,19 +304,23 @@ h2 {
 .forecast {
     color: white;
     padding: 1.5rem;
-    font-size: 0.875rem;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .forecast--morning {
     background-color: #252481;
+    height: 13vh;
 }
 
 .forecast--noon {
     background-color: #a9508c;
+    height: 13vh;
 }
 
 .forecast--evening {
     background-color: #f3621b;
+    height: 13vh;
 }
 
 .events {
@@ -296,6 +334,7 @@ h2 {
     border-bottom: 1px solid #e6e6e6;
     padding: 1.5rem;
     color: #252481;
+    margin: 0.7rem 0rem;
 }
 
 .events__item:last-child {
@@ -317,7 +356,9 @@ h2 {
 .table-row {
     display: flex;
     border-bottom: 2px solid #e6e6e6;
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.945rem;
+    margin: 1rem;
 }
 
 .table-row:last-child {

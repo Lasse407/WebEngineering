@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -82,6 +82,20 @@ export default {
 
 <style>
 @import '~/node_modules/reset-css/reset.css';
+
+.topBar--save {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    background-color: #F3621B;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: none;
+}
+
+.topBar--save:hover {
+    font-weight: bold;
+}
 
 
 .blog--admin {

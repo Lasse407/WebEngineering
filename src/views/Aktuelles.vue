@@ -1,13 +1,15 @@
 <template>
     <div class="topBar--main">
         <div>
-            <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            <a href="./Administration">
+                <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
+            </a>
         </div>
         <div class="centered">
             <h1> Aktuelles</h1>
-            <div class="topBar--date"> 01.01.2022</div>
+            <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime"> 16:30 </div>
+        <div class="currentTime" id="timeTf"> </div>
     </div>
 
     <div class="container">
@@ -79,13 +81,28 @@
 
 <script>
 
+function showTime() {
+
+    var jetzt = new Date();
+
+    var time = jetzt.toLocaleTimeString();
+
+    var date = jetzt.toLocaleDateString();
+
+    document.getElementById('timeTf').textContent = time;
+
+    document.getElementById('dateTf').textContent = date;
+
+}
+window.setInterval(showTime, 1000);
+
 </script>
 
 <style>
 @import '~/node_modules/reset-css/reset.css';
 
 h1 {
-    font-size: 40px;
+    font-size: 3rem;
     text-align: center;
 }
 
@@ -115,26 +132,24 @@ h3 {
     height: 10vh;
     width: 100%;
     color: white;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .topBar--logo--main {
-    height: 80px;
-    border-radius: 40px;
+    height: 5rem;
+    border-radius: 2rem;
     box-shadow: 0px 0px 6px 0px white;
-    margin-left: 50px;
+    margin-left: 5rem;
 }
 
 .topBar--date {
-    margin-top: 10px;
-    font-size: 25px;
-
+    font-size: 1.9rem;
 }
 
 .currentTime {
-    font-size: 30px;
-    margin-right: 50px;
+    font-size: 2rem;
+    margin: 2rem;
 }
 
 .bottomBar {

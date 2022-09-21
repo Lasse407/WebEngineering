@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">

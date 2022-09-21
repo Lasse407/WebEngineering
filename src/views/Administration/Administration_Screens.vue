@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -38,7 +38,14 @@
                 <router-link class="admin-link-logout" to="../">Logout</router-link>
             </div>
         </div>
-        <div class="contentBackground--admin"></div>
+        <div class="contentBackground--admin">
+            <div class="screen-picker">
+                <router-link to="../aktuelles" class="screen-picker_single">zu Screen: Aktuelles</router-link>
+                <router-link to="../vorlesungsplan" class="screen-picker_single">zu Screen: Vorlesungsplan
+                </router-link>
+                <router-link to="../blog" class="screen-picker_single">zu Screen: Blog</router-link>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -49,4 +56,23 @@
 
 <style>
 @import '~/node_modules/reset-css/reset.css';
+
+.screen-picker {
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    flex-direction: column;
+    margin: 2rem;
+    font-size: 2rem;
+}
+
+.screen-picker_single:hover {
+    font-weight: bold;
+}
+
+.screen-picker_single {
+    margin: 3rem;
+    color: #f3621b;
+    text-decoration: none;
+}
 </style>

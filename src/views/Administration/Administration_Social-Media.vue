@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <router-link class="topBar--logout" to="../">Logout</router-link>
+            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -43,7 +43,8 @@
                 <div class="input--header">Twitter-Account verlinken:</div>
                 <div>
                     <input class="input_twitter" type="text"
-                        placeholder="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg">
+                        placeholder="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"
+                        vue-model="twitterLink">
                 </div>
             </div>
         </div>
@@ -52,7 +53,13 @@
 </template>
 
 <script>
-
+export default {
+    data() {
+        return {
+            twitterLink: 'https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg',
+        }
+    }
+}
 </script>
 
 <style>

@@ -15,7 +15,7 @@ const routes = [
         path: '/administration',
         name: 'administration',
         redirect: {
-            name: 'admin/vorlesungsplan',
+            name: 'admin/screens',
         }
     },
     {
