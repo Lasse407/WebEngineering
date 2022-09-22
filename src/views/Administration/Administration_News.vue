@@ -45,45 +45,45 @@
                         <h3>Artikel 1 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article1Date">
+                                vue-model="article.date1">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article1Header">
+                                vue-model="article.header1">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article1Content">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content1">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 2 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article2Date">
+                                vue-model="article.date2">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article2Header">
+                                vue-model="article.header2">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article2Content">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content2">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 3 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article3Date">
+                                vue-model="article.date3">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article3Header">
+                                vue-model="article.header3">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article3Content">
+                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content3">
                         </div>
                     </div>
                 </div>
@@ -97,17 +97,20 @@
 export default {
     data() {
         return {
-            article1Date: '',
-            article1Header: '',
-            article1Content: '',
+            article: {
 
-            article2Date: '',
-            article2Header: '',
-            article2Content: '',
+                date1: '',
+                header1: '',
+                content1: '',
 
-            article3Date: '',
-            article3Header: '',
-            article3Content: '',
+                date2: '',
+                header2: '',
+                content2: '',
+
+                date3: '',
+                header3: '',
+                content3: '',
+            }
         }
     }
 }

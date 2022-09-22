@@ -43,57 +43,57 @@
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate1">
+                            vue-model="eventForm.date1">
                         <input type="text" placeholder="Name des Events 1" class="input--veranstaltungen__name"
-                            vue-model="eventName1">
+                            vue-model="eventForm.name1">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate2">
+                            vue-model="eventForm.date2">
                         <input type="text" placeholder="Name des Events 2" class="input--veranstaltungen__name"
-                            vue-model="eventName2">
+                            vue-model="eventForm.name2">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate3">
+                            vue-model="eventForm.date3">
                         <input type="text" placeholder="Name des Events 3" class="input--veranstaltungen__name"
-                            vue-model="eventName3">
+                            vue-model="eventForm.name3">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate4">
+                            vue-model="eventForm.date4">
                         <input type="text" placeholder="Name des Events 4" class="input--veranstaltungen__name"
-                            vue-model="eventName4">
+                            vue-model="eventForm.name4">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate5">
+                            vue-model="eventForm.date5">
                         <input type="text" placeholder="Name des Events 5" class="input--veranstaltungen__name"
-                            vue-model="eventName5">
+                            vue-model="eventForm.name5">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate6">
+                            vue-model="eventForm.date6">
                         <input type="text" placeholder="Name des Events 6" class="input--veranstaltungen__name"
-                            vue-model="eventName6">
+                            vue-model="eventForm.name6">
                     </small>
                 </div>
                 <div class="events__item">
                     <small class="events__item-date">
                         <input type="date" placeholder="datum" class="input--veranstaltungen__date"
-                            vue-model="eventDate7">
+                            vue-model="eventForm.date7">
                         <input type="text" placeholder="Name des Events 7" class="input--veranstaltungen__name"
-                            vue-model="eventName7">
+                            vue-model="eventForm.name7">
                     </small>
                 </div>
             </div>
@@ -106,20 +106,23 @@
 export default {
     data() {
         return {
-            eventDate1: '01.01.2022',
-            eventName1: 'Event 1',
-            eventDate2: '01.01.2022',
-            eventName2: 'Event 2',
-            eventDate3: '01.01.2022',
-            eventName3: 'Event 3',
-            eventDate4: '01.01.2022',
-            eventName4: 'Event 4',
-            eventDate5: '01.01.2022',
-            eventName5: 'Event 5',
-            eventDate6: '01.01.2022',
-            eventName6: 'Event 6',
-            eventDate7: '01.01.2022',
-            eventName7: 'Event 7',
+            eventForm: {
+                date1: '01.01.2022',
+                name1: 'Event 1',
+                date2: '01.01.2022',
+                name2: 'Event 2',
+                date3: '01.01.2022',
+                name3: 'Event 3',
+                date4: '01.01.2022',
+                name4: 'Event 4',
+                date5: '01.01.2022',
+                name5: 'Event 5',
+                date6: '01.01.2022',
+                name6: 'Event 6',
+                date7: '01.01.2022',
+                name7: 'Event 7',
+            }
+
         }
     }
 }

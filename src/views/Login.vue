@@ -9,11 +9,12 @@
             <div class="m">HS FL Dashboard <br> Administration
                 <div>
                     <div class="input-container">
-                        <input type="email" id="email" name="email" placeholder="E-Mail" v-model="email">
+                        <input type="email" id="email" name="email" placeholder="E-Mail" v-model="loginForm.email">
                         {{email}}
                     </div>
                     <div class="input-container">
-                        <input type="password" id="password" name="password" placeholder="Passwort" v-model="passwort">
+                        <input type="password" id="password" name="password" placeholder="Passwort"
+                            v-model="loginForm.password">
                     </div>
                     <div class="input-container">
                         <input type="submit" value="Login">
@@ -35,8 +36,10 @@
 export default {
     data() {
         return {
-            email: '',
-            passwort: '',
+            loginForm: {
+                email: '',
+                password: '',
+            }
         }
     }
 }

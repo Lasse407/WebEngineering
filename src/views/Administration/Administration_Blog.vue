@@ -46,19 +46,19 @@
                 </div>
                 <div class="article--description--admin">
                     Überschrift<input class="input--blog--header" type="text" placeholder="Beispiel"
-                        v-model="blogHeader">
+                        v-model="blog.header">
                 </div>
                 <div class="article--description--admin">
                     Untertitel<input class="input--blog--lowheader" type="text" placeholder="Beispiel 2"
-                        v-model="blogSubHeader">
+                        v-model="blog.subHeader">
                 </div>
                 <div class="article--description--admin">
                     Autor<input class="input--blog--author" type="text" placeholder="Max Musterman"
-                        v-model="blogAuthor">
+                        v-model="blog.author">
                 </div>
                 <div class="article--description--admin">
                     <input class="input--blog--text" type="text" placeholder="Bloginhalt - maximal 4000 Zeichen"
-                        v-model="blogContent">
+                        v-model="blog.content">
                 </div>
             </div>
         </div>
@@ -70,11 +70,13 @@
 export default {
     data() {
         return {
-            blogDate: '01.01.2022',
-            blogHeader: 'Überschrift',
-            blogSubHeader: 'Untertitel',
-            blogAuthor: 'Max Mustermann',
-            blogContent: 'Platzhalter',
+            blog: {
+                date: '01.01.2022',
+                header: 'Überschrift',
+                subHeader: 'Untertitel',
+                author: 'Max Mustermann',
+                content: 'Platzhalter',
+            }
         }
     }
 }

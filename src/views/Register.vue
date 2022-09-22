@@ -9,10 +9,11 @@
             <div class="m">HS FL Dashboard <br> Administration
                 <div>
                     <div class="input-container">
-                        <input type="email" id="email" name="email" placeholder="E-Mail">
+                        <input type="email" id="email" name="email" placeholder="E-Mail" v-model="registerForm.email">
                     </div>
                     <div class="input-container">
-                        <input type="password" id="password" name="password" placeholder="Passwort">
+                        <input type="password" id="password" name="password" placeholder="Passwort"
+                            v-model="registerForm.password">
                     </div>
                     <div class="input-container">
                         <input type="submit" value="Registrieren">
@@ -28,11 +29,19 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
-
+export default {
+    data() {
+        return {
+            registerForm: {
+                email: '',
+                password: '',
+            }
+        }
+    }
+}
 </script>
 
 <style>
