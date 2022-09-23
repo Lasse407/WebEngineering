@@ -1,16 +1,17 @@
 <template>
     <div class="topBar--main">
-        <div>
+        <div class="topBar--col">
             <a href="./Administration">
                 <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
             </a>
         </div>
-        <div class="centered">
+        <div class="centered topBar--col">
             <h1> Vorlesungsplan C-Gebäude</h1>
             <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime" id="timeTf"> </div>
+        <div class="currentTime topBar--col" id="timeTf"> </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col col--70">
@@ -208,8 +209,9 @@
 
 </template>
 
-<script>
 
+
+<script>
 
 function showTime() {
 
@@ -227,6 +229,9 @@ function showTime() {
 window.setInterval(showTime, 1000);
 
 </script>
+
+
+
 
 <style>
 @import '~/node_modules/reset-css/reset.css';

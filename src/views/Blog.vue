@@ -1,15 +1,15 @@
 <template>
     <div class="topBar--main">
-        <div>
+        <div class="topBar--col">
             <a href="./Administration">
                 <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
             </a>
         </div>
-        <div class="centered">
+        <div class="centered topBar--col">
             <h1> Blog</h1>
             <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime" id="timeTf"> </div>
+        <div class="currentTime topBar--col" id="timeTf"> </div>
     </div>
     <div class="bottomBar--blog">
         <div class="bottomBar-blog-content">
@@ -99,7 +99,7 @@ window.setInterval(showTime, 1000);
 
 .twitter-timeline {
     width: 100% !important;
-    height: 500px !important;
+    height: 100px !important;
 }
 
 .bottomBar--blog {

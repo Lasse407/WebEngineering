@@ -1,15 +1,15 @@
 <template>
     <div class="topBar--main">
-        <div>
+        <div class="topBar--col">
             <a href="./Administration">
                 <img class="topBar--logo--main" src="@/assets/LogoHsFlPlain.jpeg" alt="Logo der HS Flensburg">
             </a>
         </div>
-        <div class="centered">
+        <div class="topBar--col centered">
             <h1> Aktuelles</h1>
             <div class="topBar--date" id="dateTf"></div>
         </div>
-        <div class="currentTime" id="timeTf"> </div>
+        <div class="topBar--col currentTime" id="timeTf"> </div>
     </div>
 
     <div class="container">
@@ -126,28 +126,34 @@ h3 {
 }
 
 .topBar--main {
-
     display: flex;
     background-color: #F3621B;
     height: 10vh;
     width: 100%;
     color: white;
-    align-items: center;
-    justify-content: space-between;
+}
+
+.topBar--col {
+    display: flex;
+    width: 33%;
+    align-self: center;
 }
 
 .topBar--logo--main {
+    display: flex;
+    margin-left: 4rem;
     height: 5rem;
     border-radius: 2rem;
     box-shadow: 0px 0px 6px 0px white;
-    margin-left: 5rem;
 }
 
 .topBar--date {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
 }
 
 .currentTime {
+    display: flex;
+    justify-content: flex-end;
     font-size: 2rem;
     margin: 2rem;
 }
