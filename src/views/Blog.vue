@@ -13,50 +13,11 @@
     </div>
     <div class="bottomBar--blog">
         <div class="bottomBar-blog-content">
-            <div class="bottomBar-blog-content--date"> 10.08.2022 </div>
-            <div class="bottomBar-blog-content--headline"> Lorem Ipsum Dolor </div>
-            <div class="bottomBar-blog-content--subline"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                Lorem ipsum dolor sit amet. </div>
-            <div class="bottomBar-blog-content--text"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-                accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-                luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-                erat volutpat.
-
-                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim
-                qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-
-                Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat
-                facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-
-                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                dolore eu feugiat nulla facilisis.
-
-                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam
-                diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet
-                clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum
-                dolor sit amet. Lorem ipsum dolor sit amet, consetetur </div>
-            <div class="bottomBar-blog-content--author"> -- Max Mustermann </div>
+            <div class="bottomBar-blog-content--date">{{latestBlogpost.published_date}}</div>
+            <div class="bottomBar-blog-content--headline">{{latestBlogpost.title}}</div>
+            <div class="bottomBar-blog-content--subline">{{latestBlogpost.teaser}}</div>
+            <div class="bottomBar-blog-content--text">{{latestBlogpost.bodytext}}</div>
+            <div class="bottomBar-blog-content--author">{{latestBlogpost.author}}</div>
         </div>
         <div class="bottomBar-blog-socialmedia">
             <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"> </a>
@@ -67,7 +28,29 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+    data() {
+        return {
+            blogposts: [],
+            latestBlogpost: null,
+        };
+    },
+    created() {
+        axios.get('http://127.0.0.1:8000/api/blogposts')
+            .then((response) => {
+                console.log(response);
+
+                const blogpostWithFormattedDate = response.data.blogposts.map(blogpost => {
+                    const item = blogpost;
+                    item.published_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.published_date));
+                    return item;
+                })
+                this.blogposts = blogpostWithFormattedDate;
+                this.latestBlogpost = blogpostWithFormattedDate[0];
+            });
+    },
     mounted() {
         const twitterScript = document.createElement('script');
         twitterScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
