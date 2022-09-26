@@ -7,60 +7,18 @@
         </div>
         <div class="topBar--col centered">
             <h1> Aktuelles</h1>
-            <div class="topBar--date" id="dateTf"></div>
+            <div class="topBar--date" id="dateTf">{{currentDate}}</div>
         </div>
-        <div class="topBar--col currentTime" id="timeTf"> </div>
+        <div class="topBar--col currentTime" id="timeTf">{{currentTime}}</div>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="bottomBar--Content">
-                <div class="col col-1-of-3 article">
-                    <div class="article--date">01.01.2022</div>
-                    <div class="article--headline">Headline </div>
-                    <div class="article--text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                        et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                        est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                        takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                        kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    </div>
-                </div>
-                <div class="col col-1-of-3 article">
-                    <div class="article--date">01.01.2022</div>
-                    <div class="article--headline">Headline </div>
-                    <div class="article--text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                        et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                        est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                        takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                        kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    </div>
-
-                </div>
-                <div class="col col-1-of-3 article">
-
-                    <div class="article--date">01.01.2022</div>
-                    <div class="article--headline">Headline </div>
-                    <div class="article--text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                        et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                        est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                        takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                        kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    </div>
+                <div class="col col-1-of-3 article" :key="notification.id" v-for="notification in notifications">
+                    <div class="article--date">{{notification.published_date}}</div>
+                    <div class="article--headline">{{notification.title}}</div>
+                    <div class="article--text">{{notification.bodytext}}</div>
                 </div>
             </div>
         </div>
@@ -68,9 +26,10 @@
         <div class="content">
             <div class="row">
                 <div class="bottomBar--Content">
-                    <div class="col col-1-of-3 article article__Tagesschau">API</div>
-                    <div class="col col-1-of-3 article article__Tagesschau">API</div>
-                    <div class="col col-1-of-3 article article__Tagesschau">API</div>
+                    <div class="col col-1-of-3 article article__Tagesschau" :key="news.id" v-for="news in latestNews">
+                        {{news.title.replaceAll('++','')}}
+                        {{news.firstSentence}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,22 +39,60 @@
 </template>
 
 <script>
+import axios from 'axios';
 
-function showTime() {
+export default {
 
-    var jetzt = new Date();
+    data() {
+        return {
+            date: null,
+            time: null,
+            notifications: [],
+            latestNews: [],
+        };
+    },
+    methods: {
+        fetchNews() {
+            axios.get('https://www.tagesschau.de/api2/news')
+                .then((response) => {
+                    this.latestNews = response.data.news.slice(0, 3);
+                })
+        },
+        fetchNotifications() {
+            axios.get('http://127.0.0.1:8000/api/notifications')
+                .then((response) => {
+                    const notificationsWithFormattedDate = response.data.notifications.map(notification => {
+                        const item = notification;
+                        item.published_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.published_date));
+                        return item;
+                    })
+                    this.notifications = notificationsWithFormattedDate;
+                })
+        },
+        currentTime() {
+            var jetzt = new Date();
+            this.time = jetzt.toLocaleTimeString();
+        },
+        currentDate() {
+            var jetzt = new Date();
+            this.date = jetzt.toLocaleDateString();
+        }
+    },
+    created() {
+        this.fetchNews();
+        this.fetchNotifications();
+        setInterval(
+            this.currentTime, 1000
+        )
+        setInterval(
+            this.currentDate, 1000
+        )
+        setInterval(
+            this.fetchNews, 1000
+        )
 
-    var time = jetzt.toLocaleTimeString();
-
-    var date = jetzt.toLocaleDateString();
-
-    document.getElementById('timeTf').textContent = time;
-
-    document.getElementById('dateTf').textContent = date;
-
+    }
 }
-window.setInterval(showTime, 1000);
-
 </script>
 
 <style>
@@ -107,9 +104,9 @@ h1 {
 }
 
 h3 {
-    font-size: 30px;
+    font-size: 1.5rem;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 1rem;
     text-align: center;
 }
 
@@ -128,7 +125,7 @@ h3 {
 .topBar--main {
     display: flex;
     background-color: #F3621B;
-    height: 10vh;
+    height: 8rem;
     width: 100%;
     color: white;
 }
@@ -172,10 +169,7 @@ h3 {
     flex-direction: row;
     width: 99%;
     height: auto;
-    margin: 5px;
-
-    font-size: 40px;
-
+    margin: 2rem;
 }
 
 .bottomBar--Content--Article--Hochschulnews {
@@ -189,7 +183,7 @@ h3 {
     width: 100%;
     margin: 50px 5px 0px 5px;
 
-    font-size: 20px;
+    font-size: 1.5rem;
 
 }
 

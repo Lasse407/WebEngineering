@@ -32,9 +32,6 @@
                 <router-link class="admin-link" to="./blog">Blog</router-link>
             </div>
             <div class="sidebar--content">
-                <router-link class="admin-link" to="./user">User</router-link>
-            </div>
-            <div class="sidebar--content">
                 <router-link class="admin-link-logout" to="../">Logout</router-link>
             </div>
         </div>
@@ -263,7 +260,8 @@ export default {
     margin-left: 15rem;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #cfcfcf;
+    border-radius: 2rem;
 }
 
 h2 {
@@ -283,7 +281,7 @@ h2 {
 
     display: flex;
     background-color: #F3621B;
-    height: 5vh;
+    height: 4rem;
     width: 100%;
     color: white;
 
@@ -292,14 +290,14 @@ h2 {
 }
 
 .topBar--logo {
-    height: 50px;
-    border-radius: 25px;
-    margin-left: 13vh;
+    margin: 2rem;
+    height: 3rem;
+    border-radius: 1rem;
     box-shadow: 0px 0px 6px 0px white;
 }
 
 .topBar--logout {
-    margin-right: 5vh;
+    margin-right: 1rem;
 }
 
 .bottomBar--admin {

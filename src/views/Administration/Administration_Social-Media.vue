@@ -32,9 +32,6 @@
                 <router-link class="admin-link" to="./blog">Blog</router-link>
             </div>
             <div class="sidebar--content">
-                <router-link class="admin-link" to="./user">User</router-link>
-            </div>
-            <div class="sidebar--content">
                 <router-link class="admin-link-logout" to="../">Logout</router-link>
             </div>
         </div>
@@ -44,7 +41,11 @@
                 <div>
                     <input class="input_twitter" type="text"
                         placeholder="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"
-                        vue-model="twitterLink">
+                        v-model="twitterLink">
+                    {{twitterLink}}
+                    <button @click="updateSettings">
+                        Speichern
+                    </button>
                 </div>
             </div>
         </div>
@@ -53,12 +54,33 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            twitterLink: 'https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg',
+            twitterLink: '',
+            settings: null,
         }
+    },
+
+    methods: {
+        updateSettings() {
+            axios.get('http://127.0.0.1:8000/')
+
+        },
+        fetchSettings() {
+            axios.get('http://127.0.0.1:8000/settings/1')
+                .then((response) => {
+                    this.settings = response
+                    this.twitterLink = response.twitter_url
+                })
+        }
+    },
+    created() {
+        this.fetchSettings();
     }
+
 }
 </script>
 

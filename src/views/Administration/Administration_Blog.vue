@@ -32,9 +32,6 @@
                 <router-link class="admin-link" to="./blog">Blog</router-link>
             </div>
             <div class="sidebar--content">
-                <router-link class="admin-link" to="./user">User</router-link>
-            </div>
-            <div class="sidebar--content">
                 <router-link class="admin-link-logout" to="../">Logout</router-link>
             </div>
         </div>
@@ -80,6 +77,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style>

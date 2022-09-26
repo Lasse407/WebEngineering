@@ -49,11 +49,6 @@ const routes = [
         component: import('../views/Administration/Administration_Blog.vue')
     },
     {
-        path: '/administration/user',
-        name: 'admin/user',
-        component: import('../views/Administration/Administration_User.vue')
-    },
-    {
         path: '/aktuelles',
         name: 'aktuelles',
         component: import('../views/Aktuelles.vue')

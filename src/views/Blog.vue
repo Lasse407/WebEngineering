@@ -20,7 +20,7 @@
             <div class="bottomBar-blog-content--author">{{latestBlogpost.author}}</div>
         </div>
         <div class="bottomBar-blog-socialmedia">
-            <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"> </a>
+            <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=WRGMUwGSl1ugq_NldWGfkg"> </a>
         </div>
 
     </div>
@@ -37,11 +37,13 @@ export default {
             latestBlogpost: null,
         };
     },
+    // Emfpangsknoten
     created() {
         axios.get('http://127.0.0.1:8000/api/blogposts')
+
+            //Umformatieren des Datums
             .then((response) => {
                 console.log(response);
-
                 const blogpostWithFormattedDate = response.data.blogposts.map(blogpost => {
                     const item = blogpost;
                     item.published_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.published_date));
@@ -50,30 +52,32 @@ export default {
                 this.blogposts = blogpostWithFormattedDate;
                 this.latestBlogpost = blogpostWithFormattedDate[0];
             });
+        setInterval(
+            this.currentTime, 1000
+        )
+        setInterval(
+            this.currentDate, 1000
+        )
     },
+    // Twitter API
     mounted() {
         const twitterScript = document.createElement('script');
         twitterScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
         twitterScript.setAttribute('async', 'async');
         document.head.appendChild(twitterScript);
     },
-}
-
-function showTime() {
-
-    var jetzt = new Date();
-
-    var time = jetzt.toLocaleTimeString();
-
-    var date = jetzt.toLocaleDateString();
-
-    document.getElementById('timeTf').textContent = time;
-
-    document.getElementById('dateTf').textContent = date;
+    methods: {
+        currentTime() {
+            var jetzt = new Date();
+            this.time = jetzt.toLocaleTimeString();
+        },
+        currentDate() {
+            var jetzt = new Date();
+            this.date = jetzt.toLocaleDateString();
+        }
+    }
 
 }
-window.setInterval(showTime, 1000);
-
 </script>
 
 <style>
@@ -105,25 +109,25 @@ window.setInterval(showTime, 1000);
 
 .bottomBar-blog-content--date {
     margin: 4% 4% 0% 4%;
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 
 .bottomBar-blog-content--headline {
     margin: 1% 4% 0% 4%;
-    font-size: 40px;
+    font-size: 3rem;
     font-weight: 800;
 }
 
 .bottomBar-blog-content--subline {
     margin: 1% 4% 0% 4%;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
     text-align: left;
 }
 
 .bottomBar-blog-content--text {
     margin: 1% 4% 0% 4%;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: justify;
     white-space: normal;
 }
@@ -139,6 +143,6 @@ window.setInterval(showTime, 1000);
     width: 20%;
     height: auto;
     margin: 2%;
-    background-color: white;
+    overflow: scroll;
 }
 </style>

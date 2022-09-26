@@ -139,7 +139,7 @@
                     <div class="col col--1-of-3">
                         <div class="forecast forecast--morning">
                             <h5>Morgens</h5>
-                            <span class="forecast__degree">14°</span>
+                            <span class="forecast__degree">{{currentWeather}}</span>
                         </div>
                     </div>
                     <div class="col col--1-of-3">
@@ -212,22 +212,47 @@
 
 
 <script>
+import axios from 'axios';
 
-function showTime() {
+export default {
+    data() {
+        return {
+            weatherForecast: null,
+        };
+    },
 
-    var jetzt = new Date();
+    computed: {
+        currentWeather() {
+            // Grad-Angabe runden 
+            return `${Math.round(this.weatherForecast.temp)}°`;
+        }
+    },
 
-    var time = jetzt.toLocaleTimeString();
-
-    var date = jetzt.toLocaleDateString();
-
-    document.getElementById('timeTf').textContent = time;
-
-    document.getElementById('dateTf').textContent = date;
+    created() {
+        axios.get('https://api.openweathermap.org/data/2.5/weather?lat=54.7751118&lon=9.4504433&appid=bf992b3baccf745d382b4acc24f64e1d&lang=de&units=metric')
+            .then((response) => {
+                console.log(response);
+                this.weatherForecast = response.data.main;
+            }),
+            setInterval(
+                this.currentTime, 1000
+            ),
+            setInterval(
+                this.currentDate, 1000
+            )
+    },
+    methods: {
+        currentTime() {
+            var jetzt = new Date();
+            this.time = jetzt.toLocaleTimeString();
+        },
+        currentDate() {
+            var jetzt = new Date();
+            this.date = jetzt.toLocaleDateString();
+        }
+    }
 
 }
-window.setInterval(showTime, 1000);
-
 </script>
 
 
