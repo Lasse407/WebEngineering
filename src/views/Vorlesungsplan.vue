@@ -7,9 +7,9 @@
         </div>
         <div class="centered topBar--col">
             <h1> Vorlesungsplan C-Gebäude</h1>
-            <div class="topBar--date" id="dateTf"></div>
+            <div class="topBar--date" id="dateTf">{{date}}</div>
         </div>
-        <div class="currentTime topBar--col" id="timeTf"> </div>
+        <div class="topBar--col currentTime" id="timeTf">{{time}}</div>
     </div>
 
     <div class="container">
@@ -136,69 +136,21 @@
             </div>
             <div class="col col--30">
                 <div class="row">
-                    <div class="col col--1-of-3">
-                        <div class="forecast forecast--morning">
-                            <h5>Morgens</h5>
+                    <div class="col col--1-of-1">
+                        <div class="forecast forecast--m">
+                            <h5>Aktuelle Temperatur</h5>
                             <span class="forecast__degree">{{currentWeather}}</span>
-                        </div>
-                    </div>
-                    <div class="col col--1-of-3">
-                        <div class="forecast forecast--noon">
-                            <h5>Mittags</h5>
-                            <span class="forecast__degree">14°</span>
-                        </div>
-                    </div>
-                    <div class="col col--1-of-3">
-                        <div class="forecast forecast--evening">
-                            <h5>Abends</h5>
-                            <span class="forecast__degree">14°</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="events">
-                            <div class="events__item">
+                            <div class="events__item" :key="event.id" v-for="event in events">
                                 <small class="events__item-date">
-                                    01.01.2023
+                                    {{event.event_date}}
                                 </small>
-                                <h4 class="events__item-title">Event 1</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.02.2023
-                                </small>
-                                <h4 class="events__item-title">Event 2</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.03.2023
-                                </small>
-                                <h4 class="events__item-title">Event 3</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.04.2023
-                                </small>
-                                <h4 class="events__item-title">Event 4</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.05.2023
-                                </small>
-                                <h4 class="events__item-title">Event 5</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.05.2023
-                                </small>
-                                <h4 class="events__item-title">Event 6</h4>
-                            </div>
-                            <div class="events__item">
-                                <small class="events__item-date">
-                                    01.05.2023
-                                </small>
-                                <h4 class="events__item-title">Event 7</h4>
+                                <h4 class="events__item-title">{{event.title}}</h4>
                             </div>
                         </div>
                     </div>
@@ -218,30 +170,38 @@ export default {
     data() {
         return {
             weatherForecast: null,
+            events: [],
         };
     },
 
     computed: {
         currentWeather() {
             // Grad-Angabe runden 
-            return `${Math.round(this.weatherForecast.temp)}°`;
+            return `${Math.round(this.weatherForecast.temp)}°C`;
         }
     },
 
-    created() {
-        axios.get('https://api.openweathermap.org/data/2.5/weather?lat=54.7751118&lon=9.4504433&appid=bf992b3baccf745d382b4acc24f64e1d&lang=de&units=metric')
-            .then((response) => {
-                console.log(response);
-                this.weatherForecast = response.data.main;
-            }),
-            setInterval(
-                this.currentTime, 1000
-            ),
-            setInterval(
-                this.currentDate, 1000
-            )
-    },
     methods: {
+
+        fetchWeather() {
+            axios.get('https://api.openweathermap.org/data/2.5/weather?lat=54.7751118&lon=9.4504433&appid=81e419e293343e0702e559352ace06ee&lang=de&units=metric')
+                .then((response) => {
+                    this.weatherForecast = response.data.main;
+                })
+        },
+
+        fetchEvents() {
+            axios.get('http://127.0.0.1:8000/api/events')
+                .then((response) => {
+                    const eventsWithFormattedDate = response.data.events.map(event => {
+                        const item = event;
+                        item.published_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.event_date));
+                        return item;
+                    })
+                    this.events = eventsWithFormattedDate;
+                })
+        },
+
         currentTime() {
             var jetzt = new Date();
             this.time = jetzt.toLocaleTimeString();
@@ -250,8 +210,21 @@ export default {
             var jetzt = new Date();
             this.date = jetzt.toLocaleDateString();
         }
-    }
+    },
 
+    created() {
+        this.fetchEvents();
+        this.fetchWeather();
+        setInterval(
+            this.currentTime, 1000
+        );
+        setInterval(
+            this.currentDate, 1000
+        );
+        setInterval(
+            this.fetchWeather, 1000
+        );
+    }
 }
 </script>
 
@@ -336,20 +309,19 @@ h2 {
     padding: 1.5rem;
     font-size: 2rem;
     text-align: center;
+    border-radius: 6rem;
 }
 
-.forecast--morning {
+.forecast__degree {
+    font-size: 4rem;
+    margin-left: 2rem;
+}
+
+.forecast--m {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #252481;
-    height: 13vh;
-}
-
-.forecast--noon {
-    background-color: #a9508c;
-    height: 13vh;
-}
-
-.forecast--evening {
-    background-color: #f3621b;
     height: 13vh;
 }
 

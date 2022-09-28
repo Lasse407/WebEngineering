@@ -50,7 +50,7 @@
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content1">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content1">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
@@ -65,7 +65,7 @@
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content2">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content2">
                         </div>
                     </div>
                     <div class="col col--40 article--admin">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 850 Zeichen" vue-model="article.content3">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content3">
                         </div>
                     </div>
                 </div>

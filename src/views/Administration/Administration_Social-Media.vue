@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <button class="topBar--save">Speichern</button>
+            <button @click="updateSettings" class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -42,14 +42,11 @@
                     <input class="input_twitter" type="text"
                         placeholder="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"
                         v-model="twitterLink">
-                    {{twitterLink}}
-                    <button @click="updateSettings">
-                        Speichern
-                    </button>
                 </div>
             </div>
         </div>
     </div>
+
 
 </template>
 
@@ -96,5 +93,11 @@ export default {
 .input_twitter {
     width: 100rem;
     margin: 0rem 2rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.currentSettings {
+    margin-left: 3rem;
 }
 </style>

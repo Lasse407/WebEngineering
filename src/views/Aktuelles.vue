@@ -7,9 +7,9 @@
         </div>
         <div class="topBar--col centered">
             <h1> Aktuelles</h1>
-            <div class="topBar--date" id="dateTf">{{currentDate}}</div>
+            <div class="topBar--date" id="dateTf">{{date}}</div>
         </div>
-        <div class="topBar--col currentTime" id="timeTf">{{currentTime}}</div>
+        <div class="topBar--col currentTime" id="timeTf">{{time}}</div>
     </div>
 
     <div class="container">
@@ -26,9 +26,9 @@
         <div class="content">
             <div class="row">
                 <div class="bottomBar--Content">
-                    <div class="col col-1-of-3 article article__Tagesschau" :key="news.id" v-for="news in latestNews">
-                        {{news.title.replaceAll('++','')}}
-                        {{news.firstSentence}}
+                    <div class="col col-1-of-3 article article--news" :key="news.id" v-for="news in latestNews">
+                        <div class="article--news--header">{{news.title.replaceAll('++','')}}</div>
+                        <div class="article--news--body">{{news.firstSentence}}</div>
                     </div>
                 </div>
             </div>
@@ -52,12 +52,14 @@ export default {
         };
     },
     methods: {
+
         fetchNews() {
             axios.get('https://www.tagesschau.de/api2/news')
                 .then((response) => {
                     this.latestNews = response.data.news.slice(0, 3);
                 })
         },
+
         fetchNotifications() {
             axios.get('http://127.0.0.1:8000/api/notifications')
                 .then((response) => {
@@ -88,9 +90,8 @@ export default {
             this.currentDate, 1000
         )
         setInterval(
-            this.fetchNews, 1000
+            this.fetchNews, 10000
         )
-
     }
 }
 </script>
@@ -187,13 +188,25 @@ h3 {
 
 }
 
-.article__Tagesschau {
+.article--news {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    flex-direction: column;
     background-color: white;
     height: 18rem;
     width: 100%;
+}
+
+.article--news--header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.article--news--body {
+    font-size: 1rem;
+    padding: 1rem;
 }
 
 .article {
@@ -202,18 +215,20 @@ h3 {
 }
 
 .article--date {
-    font-size: 1.5rem;
-    margin: 1rem;
+    font-size: 1rem;
+    margin: 1rem 1rem 0rem 1rem;
+    font-style: italic;
 }
 
 .article--headline {
-    font-size: 3rem;
-    margin: 1rem;
+    font-size: 1.5rem;
+    margin: 0rem 1rem;
+    font-weight: bold;
 }
 
 .article--text {
-    margin: 1rem;
-    font-size: 1.5rem;
+    margin: 0.5rem 1rem;
+    font-size: 0.9rem;
     text-align: justify;
 }
 
