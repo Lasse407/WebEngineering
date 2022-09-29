@@ -7,9 +7,9 @@
         </div>
         <div class="topBar--col centered">
             <h1> Aktuelles</h1>
-            <div class="topBar--date" id="dateTf">{{date}}</div>
+            <div class="topBar--date">{{date}}</div>
         </div>
-        <div class="topBar--col currentTime" id="timeTf">{{time}}</div>
+        <div class="topBar--col currentTime">{{time}}</div>
     </div>
 
     <div class="container">

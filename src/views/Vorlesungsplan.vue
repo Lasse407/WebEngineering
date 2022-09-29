@@ -7,9 +7,9 @@
         </div>
         <div class="centered topBar--col">
             <h1> Vorlesungsplan C-Gebäude</h1>
-            <div class="topBar--date" id="dateTf">{{date}}</div>
+            <div class="topBar--date">{{date}}</div>
         </div>
-        <div class="topBar--col currentTime" id="timeTf">{{time}}</div>
+        <div class="topBar--col currentTime">{{time}}</div>
     </div>
 
     <div class="container">
@@ -160,8 +160,6 @@
     </div>
 
 </template>
-
-
 
 <script>
 import axios from 'axios';

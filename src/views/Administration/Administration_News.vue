@@ -140,7 +140,7 @@ export default {
 
 .input--article--text {
     margin: 0rem 1rem;
-    height: 55rem;
+    height: 50vh;
     width: 38rem;
 }
 </style>

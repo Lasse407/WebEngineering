@@ -256,6 +256,7 @@ export default {
 
 .vl-plan-admin {
     width: 100rem;
+    height: 60rem;
     align-self: center;
     margin-left: 15rem;
     display: flex;
@@ -303,7 +304,7 @@ h2 {
 .bottomBar--admin {
     display: flex;
     background-color: #f2f2f2;
-    height: 95vh;
+    height: 60rem;
     width: 100%;
 }
 
