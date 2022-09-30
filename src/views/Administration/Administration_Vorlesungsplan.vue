@@ -56,11 +56,12 @@
                             <h5>-</h5>
                         </div>
                         <div class="table-col table-col--30">
-                            <div v-for="lectureName in lecture.lecture_names" :key="lectureName.id">
-                                <select v-model="lectureName.lecture_name">
+                            <div v-for="lectureLectureName in lecture.lecture_names" :key="lectureLectureName.id">
+                                <select v-model="lectureLectureName.lecture_name">
                                     <option disabled value="">Veranstaltung auswählen</option>
-                                    <option v-for="lecture_name in lecture_names" :key="lecture_name.id">
-                                        {{lecture_name.lecture_name}}</option>
+                                    <option v-for="lectureName in lectureNames" :key="lectureName.id">
+                                        {{ lectureName.lecture_name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -74,7 +75,7 @@
                         </div>
                         <div class="table-col table-col--20">
                             <div v-for="lectureRoom in lecture.rooms" :key="lectureRoom.id">
-                                <select v-model="lectureRoom.room">
+                                <select v-model="lectureRoom.title">
                                     <option disabled value="">Raum auswählen</option>
                                     <option v-for="room in rooms" :key="room.id">{{room.title}}</option>
                                 </select>
@@ -114,7 +115,7 @@ export default {
     data() {
         return {
             rooms: [],
-            lecture_names: [],
+            lectureNames: [],
             speakers: [],
             lectures: [],
             speakerName: '',
@@ -160,7 +161,7 @@ export default {
             axios.get('http://127.0.0.1:8000/api/lectureNames')
                 .then((response) => {
                     console.log(response.data);
-                    this.lectureNames = response.data.lecture_names;
+                    this.lectureNames = response.data.lectureNames;
                 })
         },
 
