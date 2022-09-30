@@ -12,7 +12,6 @@
     </div>
     <div class="bottomBar--admin">
         <div class="sidebar">
-            <div class="sidebar--content--loginInfo">Angemeldet: <br> max.mustermann@hs-flensburg.de</div>
             <div class="sidebar--content">
                 <router-link class="admin-link" to="./vorlesungsplan">Vorlesungsplan</router-link>
             </div>

@@ -7,12 +7,10 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <button class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
         <div class="sidebar">
-            <div class="sidebar--content--loginInfo">Angemeldet: <br> max.mustermann@hs-flensburg.de</div>
             <div class="sidebar--content current">
                 <router-link class="admin-link" to="./vorlesungsplan">Vorlesungsplan</router-link>
             </div>
@@ -52,14 +50,15 @@
                             Raum
                         </div>
                     </div>
+
                     <div class="table-row" v-for="lecture in lectures" :key="lecture.id">
                         <div class="table-col table-col--20">
-                            <p>{{lecture.start_time}} - {{lecture.end_time}}</p>
+                            <h5>-</h5>
                         </div>
                         <div class="table-col table-col--30">
                             <div v-for="lectureName in lecture.lecture_names" :key="lectureName.id">
                                 <select v-model="lectureName.lecture_name">
-                                    <option disabled value="">Please select one</option>
+                                    <option disabled value="">Veranstaltung auswählen</option>
                                     <option v-for="lecture_name in lecture_names" :key="lecture_name.id">
                                         {{lecture_name.lecture_name}}</option>
                                 </select>
@@ -68,33 +67,37 @@
                         <div class="table-col table-col--30">
                             <div v-for="lectureSpeaker in lecture.speakers" :key="lectureSpeaker.id">
                                 <select v-model="lectureSpeaker.speaker">
-                                    <option disabled value="">Please select one</option>
+                                    <option disabled value="">Dozent auswählen</option>
                                     <option v-for="speaker in speakers" :key="speaker.id">{{speaker.speaker}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table">
+                            <div v-for="lectureRoom in lecture.rooms" :key="lectureRoom.id">
+                                <select v-model="lectureRoom.room">
+                                    <option disabled value="">Raum auswählen</option>
+                                    <option v-for="room in rooms" :key="room.id">{{room.title}}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button @click="updateLectures">Submit</button>
             <div class="input--container">
                 <div>Dozent erstellen
                     <input type="text" placeholder="Name des Dozenten" class="input--categorie" v-model="speakerName">
                     <button @click="createSpeaker"
-                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Bestätigen</button>
                 </div>
                 <div>Raum erstellen
                     <input type="text" placeholder="Raumnummer" class="input--categorie" v-model="roomNumber">
                     <button @click="createRoom"
-                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Bestätigen</button>
                 </div>
                 <div>Veranstaltung erstellen
                     <input type="text" placeholder="Veranstaltungsname" class="input--categorie" v-model="lectureName">
                     <button @click="createLectureName"
-                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Bestätigen</button>
                 </div>
             </div>
 
@@ -111,7 +114,7 @@ export default {
     data() {
         return {
             rooms: [],
-            lectureNames: [],
+            lecture_names: [],
             speakers: [],
             lectures: [],
             speakerName: '',
@@ -125,9 +128,9 @@ export default {
             axios.get('http://127.0.0.1:8000/api/lectures')
                 .then((response) => {
                     console.log(response.data);
+
                     this.lectures = response.data.data;
                 })
-
             /*
             const date = new Date('2023-12-12 08:00:00');
             date.getHours()
@@ -135,8 +138,14 @@ export default {
             const date = new Date('2023-12-12 08:00:00');
             const hours = date.getHours();
             */
+        },
 
-
+        fetchRooms() {
+            axios.get('http://127.0.0.1:8000/api/rooms')
+                .then((response) => {
+                    console.log(response.data);
+                    this.rooms = response.data.rooms;
+                })
         },
 
         fetchSpeakers() {
@@ -147,58 +156,57 @@ export default {
                 })
         },
 
+        fetchLectureNames() {
+            axios.get('http://127.0.0.1:8000/api/lectureNames')
+                .then((response) => {
+                    console.log(response.data);
+                    this.lectureNames = response.data.lecture_names;
+                })
+        },
+
+        /*
         updateLectures() {
             this.lectures.forEach((lecture) => {
                 axios.put(`http://127.0.0.1:8000/api/lectures/${lecture.id}`, {
                     withCredentials: true,
                     data: {
                         speakers: JSON.stringify(this.speakers),
+                        rooms: JSON.stringify(this.rooms),
+                        lecture_names: JSON.stringify(this.lecture_names),
                     }
-
                 })
                     .then((response) => {
                         console.log(response)
                     })
             })
         },
+        */
 
         createSpeaker() {
             axios.post('http://127.0.0.1:8000/api/speakers', {
                 speaker: this.speakerName
             })
                 .then(() => {
-                    alert('test');
+                    alert('Neuer Dozent wurde hinzugefügt');
                 })
         },
 
         createRoom() {
-            const rooms = [
-                {
-                    title: '122'
-                },
-                {
-                    title: '123'
-                },
-                {
-                    title: '124'
-                }
-            ]
-            axios.post('url', { rooms, title: '124' })
+            axios.post('http://127.0.0.1:8000/api/rooms', {
+                title: this.roomNumber
+            })
+                .then(() => {
+                    alert('Neuer Raum wurde hinzugefügt');
+                })
         },
 
         createLectureName() {
-            const lectureNames = [
-                {
-                    lecture_name: 'Web Engineering'
-                },
-                {
-                    lecture_name: 'Software Engineering'
-                },
-                {
-                    lecture_name: 'Basic Programming'
-                }
-            ]
-            axios.post('url', { lectureNames, lecture_name: 'Web Engineering' })
+            axios.post('http://127.0.0.1:8000/api/lectureNames', {
+                lecture_name: this.lectureName
+            })
+                .then(() => {
+                    alert('Neue Veranstaltung wurde hinzugefügt');
+                })
         },
 
     },
@@ -206,6 +214,8 @@ export default {
     created() {
         this.fetchSpeakers();
         this.fetchLectures();
+        this.fetchRooms();
+        this.fetchLectureNames();
     }
 
 }
@@ -214,16 +224,20 @@ export default {
 <style>
 @import '~/node_modules/reset-css/reset.css';
 
+h5 {
+    font-size: 1.3rem;
+}
+
 .input--table {
     font-size: 1rem;
     text-align: left;
     padding: 1.25rem;
-    height: 3rem;
 }
 
 .input--container {
     margin: 1rem 0rem;
     background-color: #cfcfcf;
+    font-size: 1rem;
     padding: 2rem;
     border-radius: 2rem;
 }
@@ -330,7 +344,8 @@ h2 {
 
 .contentBackground--admin--vl {
     display: flex;
-    margin: 5rem;
+    margin: 1rem;
+    font-size: 0.5rem;
     flex-direction: column;
     margin-left: 0rem;
 }

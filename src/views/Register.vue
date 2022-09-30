@@ -1,3 +1,6 @@
+<!--Anmerkung: Login-Funktion war geplant, jedoch nicht umsetzen können. Daher wird diese View ignoriert. -->
+
+
 <template>
     <div class="main">
         <div class="logo">

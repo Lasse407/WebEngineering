@@ -1,3 +1,5 @@
+<!--Anmerkung: Login-Funktion war geplant, jedoch nicht umsetzen können. Daher wird direkt in die Administration gesprungen. -->
+
 <template>
     <div class="main">
         <div class="logo">
@@ -7,8 +9,8 @@
         <div class="half">
             <div class="m">HS FL Dashboard <br> Administration</div>
             <div class="button--container">
-                <router-link class="button-router button--white" to="login">Login</router-link>
-                <router-link class="button-router button--purple" to="register">Registrieren</router-link>
+                <router-link class="button-router button--white" to="administration">Login</router-link>
+                <router-link class="button-router button--purple" to="administration">Registrieren</router-link>
             </div>
         </div>
     </div>

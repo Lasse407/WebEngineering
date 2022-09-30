@@ -7,12 +7,11 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <button class="topBar--save">Speichern</button>
+            <button class="topBar--save"></button>
         </div>
     </div>
     <div class="bottomBar--admin">
         <div class="sidebar">
-            <div class="sidebar--content--loginInfo">Angemeldet: <br> max.mustermann@hs-flensburg.de</div>
             <div class="sidebar--content">
                 <router-link class="admin-link" to="./vorlesungsplan">Vorlesungsplan</router-link>
             </div>
@@ -42,46 +41,55 @@
                         <h3>Artikel 1 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article.date1">
+                                v-model="notificationPublishedDate1">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article.header1">
+                                v-model="notificationTitle1">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content1">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" v-model="notificationBodytext1">
                         </div>
+                        <button @click="updateNotification1()"
+                            style="height:3rem;width:80%;margin-left:4rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Änderungen
+                            speichern</button>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 2 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article.date2">
+                                v-model="notificationPublishedDate2">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article.header2">
+                                v-model="notificationTitle2">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content2">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" v-model="notificationBodytext2">
                         </div>
+                        <button @click="updateNotification2()"
+                            style="height:3rem;width:80%;margin-left:4rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Änderungen
+                            speichern</button>
                     </div>
                     <div class="col col--40 article--admin">
                         <h3>Artikel 3 bearbeiten:</h3>
                         <div class="article--description--admin">
                             Datum <input class="input--article--date" type="date" placeholder="Datum"
-                                vue-model="article.date3">
+                                v-model="notificationPublishedDate3">
                         </div>
                         <div class="article--description--admin">
                             Überschrift<input class="input--article--header" type="text" placeholder="Headline"
-                                vue-model="article.header3">
+                                v-model="notificationTitle3">
                         </div>
                         <div class="article--description--admin">
                             <input class="input--article--text" type="text"
-                                placeholder="Artikelinhalt - maximal 2300 Zeichen" vue-model="article.content3">
+                                placeholder="Artikelinhalt - maximal 2300 Zeichen" v-model="notificationBodytext3">
                         </div>
+                        <button @click="updateNotification3()"
+                            style="height:3rem;width:80%;margin-left:4rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Änderungen
+                            speichern</button>
                     </div>
                 </div>
             </div>
@@ -91,24 +99,57 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            article: {
+            notificationPublishedDate1: '',
+            notificationTitle1: '',
+            notificationBodytext1: '',
+            notificationPublishedDate2: '',
+            notificationTitle2: '',
+            notificationBodytext2: '',
+            notificationPublishedDate3: '',
+            notificationTitle3: '',
+            notificationBodytext3: '',
 
-                date1: '',
-                header1: '',
-                content1: '',
-
-                date2: '',
-                header2: '',
-                content2: '',
-
-                date3: '',
-                header3: '',
-                content3: '',
-            }
         }
+    },
+    methods: {
+        updateNotification1() {
+            axios.put('http://127.0.0.1:8000/api/notifications/1', {
+                title: this.notificationTitle1,
+                published_date: this.notificationPublishedDate1,
+                bodytext: this.notificationBodytext1
+            })
+                .then(() => {
+                    alert('Artikel 1 wurde geändert.');
+                })
+        },
+        updateNotification2() {
+            axios.put('http://127.0.0.1:8000/api/notifications/2', {
+                title: this.notificationTitle2,
+                published_date: this.notificationPublishedDate2,
+                bodytext: this.notificationBodytext2
+            })
+                .then(() => {
+                    alert('Artikel 2 wurde geändert.');
+                })
+        },
+        updateNotification3() {
+            axios.put('http://127.0.0.1:8000/api/notifications/3', {
+                title: this.notificationTitle3,
+                published_date: this.notificationPublishedDate3,
+                bodytext: this.notificationBodytext3
+            })
+                .then(() => {
+                    alert('Artikel 3 wurde geändert.');
+                })
+        }
+    },
+
+    created() {
     }
 }
 </script>
@@ -118,7 +159,6 @@ export default {
 
 .article--admin {
     margin: 2rem 1rem;
-    background-color: #cfcfcf;
     border-radius: 3rem;
 }
 

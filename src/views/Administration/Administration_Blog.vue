@@ -6,13 +6,10 @@
         <div class="topBar--header">
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
-        <div class="topBar--logout">
-            <button class="topBar--save">Speichern</button>
-        </div>
+        <div class="topBar--logout"></div>
     </div>
     <div class="bottomBar--admin">
         <div class="sidebar">
-            <div class="sidebar--content--loginInfo">Angemeldet: <br> max.mustermann@hs-flensburg.de</div>
             <div class="sidebar--content">
                 <router-link class="admin-link" to="./social-media">Vorlesungsplan</router-link>
             </div>
@@ -39,24 +36,24 @@
             <div class="col blog--admin">
                 <h3>Blogbeitrag bearbeiten</h3>
                 <div class="article--description--admin">
-                    Datum <input class="input--blog--date" type="date" placeholder="Datum" v-model="blogDate">
+                    Datum <input class="input--blog--date" type="date" placeholder="Datum" v-model="date">
                 </div>
                 <div class="article--description--admin">
-                    Überschrift<input class="input--blog--header" type="text" placeholder="Beispiel"
-                        v-model="blog.header">
+                    Überschrift<input class="input--blog--header" type="text" placeholder="Beispiel" v-model="header">
                 </div>
                 <div class="article--description--admin">
                     Untertitel<input class="input--blog--lowheader" type="text" placeholder="Beispiel 2"
-                        v-model="blog.subHeader">
+                        v-model="subHeader">
                 </div>
                 <div class="article--description--admin">
-                    Autor<input class="input--blog--author" type="text" placeholder="Max Musterman"
-                        v-model="blog.author">
+                    Autor<input class="input--blog--author" type="text" placeholder="Max Musterman" v-model="author">
                 </div>
                 <div class="article--description--admin">
                     <input class="input--blog--text" type="text" placeholder="Bloginhalt - maximal 4000 Zeichen"
-                        v-model="blog.content">
+                        v-model="content">
                 </div>
+                <button @click="updateBlogpost" class="button--3">Änderung bestätigen</button>
+                Den aktuellen Blog sehen in Screens --> Blog
             </div>
         </div>
     </div>
@@ -64,19 +61,42 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+
 export default {
     data() {
         return {
-            blog: {
-                date: '01.01.2022',
-                header: 'Überschrift',
-                subHeader: 'Untertitel',
-                author: 'Max Mustermann',
-                content: 'Platzhalter',
-            }
+            date: '',
+            header: '',
+            subHeader: '',
+            author: '',
+            content: '',
         }
+    },
+
+    methods: {
+        updateBlogpost() {
+            axios.put('http://127.0.0.1:8000/api/blogposts/1', {
+                title: this.header,
+                teaser: this.subHeader,
+                author: this.author,
+                published_date: this.date,
+                bodytext: this.content
+            })
+                .then(() => {
+                    alert('Blog wurde angepasst.');
+                })
+        },
+    },
+
+    created() {
+
     }
+
 }
+
+
 
 </script>
 

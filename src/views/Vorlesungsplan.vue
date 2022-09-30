@@ -181,6 +181,15 @@ export default {
 
     methods: {
 
+        fetchLectures() {
+            axios.get('http://127.0.0.1:8000/api/lectures')
+                .then((response) => {
+                    console.log(response.data);
+                    this.lectures = response.data.data;
+                })
+        },
+
+
         fetchWeather() {
             axios.get('https://api.openweathermap.org/data/2.5/weather?lat=54.7751118&lon=9.4504433&appid=81e419e293343e0702e559352ace06ee&lang=de&units=metric')
                 .then((response) => {
@@ -211,6 +220,7 @@ export default {
     },
 
     created() {
+        this.fetchLectures();
         this.fetchEvents();
         this.fetchWeather();
         setInterval(

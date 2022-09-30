@@ -20,7 +20,8 @@
             <div class="bottomBar-blog-content--author">{{latestBlogpost.author}}</div>
         </div>
         <div class="bottomBar-blog-socialmedia">
-            <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=WRGMUwGSl1ugq_NldWGfkg"> </a>
+            <a class="twitter-timeline" href="https://twitter.com/HochschuleFL?s=20&t=XxklDWYORdSbWAun4lUCsA
+"> </a>
         </div>
 
     </div>
@@ -35,12 +36,33 @@ export default {
         return {
             blogposts: [],
             latestBlogpost: null,
+            currentTwitterLink: '',
         };
+    },
+
+    methods: {
+
+        fetchSettings() {
+            axios.get('http://127.0.0.1:8000/api/settings/1')
+                .then((response) => {
+                    console.log(response)
+                    this.settings = response.settings
+                    this.currentTwitterLink = response.data.twitter_url
+                })
+        },
+        currentTime() {
+            var jetzt = new Date();
+            this.time = jetzt.toLocaleTimeString();
+        },
+        currentDate() {
+            var jetzt = new Date();
+            this.date = jetzt.toLocaleDateString();
+        }
+
     },
     // Emfpangsknoten
     created() {
         axios.get('http://127.0.0.1:8000/api/blogposts')
-
             //Umformatieren des Datums
             .then((response) => {
                 console.log(response);
@@ -58,6 +80,7 @@ export default {
         setInterval(
             this.currentDate, 1000
         )
+        this.fetchSettings();
     },
     // Twitter API
     mounted() {
@@ -66,16 +89,6 @@ export default {
         twitterScript.setAttribute('async', 'async');
         document.head.appendChild(twitterScript);
     },
-    methods: {
-        currentTime() {
-            var jetzt = new Date();
-            this.time = jetzt.toLocaleTimeString();
-        },
-        currentDate() {
-            var jetzt = new Date();
-            this.date = jetzt.toLocaleDateString();
-        }
-    }
 
 }
 </script>
