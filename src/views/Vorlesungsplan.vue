@@ -56,19 +56,19 @@
                                 <p>10-12</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{lectureNames1}}</p>
-                                <p>{{lectureNames2}}</p>
-                                <p>{{lectureNames3}}</p>
+                                <p>{{lectureNames4}}</p>
+                                <p>{{lectureNames5}}</p>
+                                <p>{{lectureNames6}}</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{speakers1}}</p>
-                                <p>{{speakers2}}</p>
-                                <p>{{speakers3}}</p>
+                                <p>{{speakers4}}</p>
+                                <p>{{speakers5}}</p>
+                                <p>{{speakers6}}</p>
                             </div>
                             <div class="table-col table-col--20">
-                                <p>{{rooms1}}</p>
-                                <p>{{rooms2}}</p>
-                                <p>{{rooms3}}</p>
+                                <p>{{rooms4}}</p>
+                                <p>{{rooms5}}</p>
+                                <p>{{rooms6}}</p>
                             </div>
                         </div>
                         <div class="table-row">
@@ -76,19 +76,19 @@
                                 <p>12-14</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{lectureNames1}}</p>
-                                <p>{{lectureNames2}}</p>
-                                <p>{{lectureNames3}}</p>
+                                <p>{{lectureNames7}}</p>
+                                <p>{{lectureNames8}}</p>
+                                <p>{{lectureNames9}}</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{speakers1}}</p>
-                                <p>{{speakers2}}</p>
-                                <p>{{speakers3}}</p>
+                                <p>{{speakers7}}</p>
+                                <p>{{speakers8}}</p>
+                                <p>{{speakers9}}</p>
                             </div>
                             <div class="table-col table-col--20">
-                                <p>{{rooms1}}</p>
-                                <p>{{rooms2}}</p>
-                                <p>{{rooms3}}</p>
+                                <p>{{rooms7}}</p>
+                                <p>{{rooms8}}</p>
+                                <p>{{rooms9}}</p>
                             </div>
                         </div>
                         <div class="table-row">
@@ -96,19 +96,19 @@
                                 <p>14-16</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{lectureNames1}}</p>
-                                <p>{{lectureNames2}}</p>
-                                <p>{{lectureNames3}}</p>
+                                <p>{{lectureNames10}}</p>
+                                <p>{{lectureNames11}}</p>
+                                <p>{{lectureNames12}}</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{speakers1}}</p>
-                                <p>{{speakers2}}</p>
-                                <p>{{speakers3}}</p>
+                                <p>{{speakers10}}</p>
+                                <p>{{speakers11}}</p>
+                                <p>{{speakers12}}</p>
                             </div>
                             <div class="table-col table-col--20">
-                                <p>{{rooms1}}</p>
-                                <p>{{rooms2}}</p>
-                                <p>{{rooms3}}</p>
+                                <p>{{rooms10}}</p>
+                                <p>{{rooms11}}</p>
+                                <p>{{rooms12}}</p>
                             </div>
                         </div>
                         <div class="table-row">
@@ -116,19 +116,19 @@
                                 <p>16-18</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{lectureNames1}}</p>
-                                <p>{{lectureNames2}}</p>
-                                <p>{{lectureNames3}}</p>
+                                <p>{{lectureNames13}}</p>
+                                <p>{{lectureNames14}}</p>
+                                <p>{{lectureNames15}}</p>
                             </div>
                             <div class="table-col table-col--30">
-                                <p>{{speakers1}}</p>
-                                <p>{{speakers2}}</p>
-                                <p>{{speakers3}}</p>
+                                <p>{{speakers13}}</p>
+                                <p>{{speakers14}}</p>
+                                <p>{{speakers15}}</p>
                             </div>
                             <div class="table-col table-col--20">
-                                <p>{{rooms1}}</p>
-                                <p>{{rooms2}}</p>
-                                <p>{{rooms3}}</p>
+                                <p>{{rooms13}}</p>
+                                <p>{{rooms14}}</p>
+                                <p>{{rooms15}}</p>
                             </div>
                         </div>
                     </div>
@@ -293,7 +293,7 @@ export default {
                     this.lectureNames3 = response.data.lecture_name;
                 })
         },
-        //4
+        //4 ----------
         fetchRooms4() {
             axios.get('http://127.0.0.1:8000/api/rooms/4')
                 .then((response) => {
@@ -315,7 +315,7 @@ export default {
                     this.lectureNames4 = response.data.lecture_name;
                 })
         },
-        //5
+        //5 ----------
         fetchRooms5() {
             axios.get('http://127.0.0.1:8000/api/rooms/5')
                 .then((response) => {
@@ -337,7 +337,7 @@ export default {
                     this.lectureNames5 = response.data.lecture_name;
                 })
         },
-        //6
+        //6 ----------
         fetchRooms6() {
             axios.get('http://127.0.0.1:8000/api/rooms/6')
                 .then((response) => {
@@ -359,29 +359,29 @@ export default {
                     this.lectureNames6 = response.data.lecture_name;
                 })
         },
-        //7
+        //7 ----------
         fetchRooms7() {
             axios.get('http://127.0.0.1:8000/api/rooms/7')
                 .then((response) => {
                     console.log(response.data);
-                    this.rooms6 = response.data.title;
+                    this.rooms7 = response.data.title;
                 })
         },
         fetchSpeakers7() {
             axios.get('http://127.0.0.1:8000/api/speakers/7')
                 .then((response) => {
                     console.log(response.data);
-                    this.speakers6 = response.data.speaker;
+                    this.speakers7 = response.data.speaker;
                 })
         },
         fetchLectureNames7() {
             axios.get('http://127.0.0.1:8000/api/lectureNames/7')
                 .then((response) => {
                     console.log(response.data);
-                    this.lectureNames6 = response.data.lecture_name;
+                    this.lectureNames7 = response.data.lecture_name;
                 })
         },
-        //8
+        //8 ----------
         fetchRooms8() {
             axios.get('http://127.0.0.1:8000/api/rooms/8')
                 .then((response) => {
@@ -403,7 +403,7 @@ export default {
                     this.lectureNames8 = response.data.lecture_name;
                 })
         },
-        //9
+        //9 ----------
         fetchRooms9() {
             axios.get('http://127.0.0.1:8000/api/rooms/9')
                 .then((response) => {
@@ -425,7 +425,7 @@ export default {
                     this.lectureNames9 = response.data.lecture_name;
                 })
         },
-        //10
+        //10 ----------
         fetchRooms10() {
             axios.get('http://127.0.0.1:8000/api/rooms/10')
                 .then((response) => {
@@ -447,7 +447,7 @@ export default {
                     this.lectureNames10 = response.data.lecture_name;
                 })
         },
-        //11
+        //11 ----------
         fetchRooms11() {
             axios.get('http://127.0.0.1:8000/api/rooms/11')
                 .then((response) => {
@@ -469,7 +469,7 @@ export default {
                     this.lectureNames11 = response.data.lecture_name;
                 })
         },
-        //12
+        //12 ----------
         fetchRooms12() {
             axios.get('http://127.0.0.1:8000/api/rooms/12')
                 .then((response) => {
@@ -491,7 +491,7 @@ export default {
                     this.lectureNames12 = response.data.lecture_name;
                 })
         },
-        //13
+        //13 ----------
         fetchRooms13() {
             axios.get('http://127.0.0.1:8000/api/rooms/13')
                 .then((response) => {
@@ -513,7 +513,7 @@ export default {
                     this.lectureNames13 = response.data.lecture_name;
                 })
         },
-        //14
+        //14 ----------
         fetchRooms14() {
             axios.get('http://127.0.0.1:8000/api/rooms/14')
                 .then((response) => {
@@ -535,7 +535,7 @@ export default {
                     this.lectureNames14 = response.data.lecture_name;
                 })
         },
-        //15
+        //15 ----------
         fetchRooms15() {
             axios.get('http://127.0.0.1:8000/api/rooms/15')
                 .then((response) => {
@@ -646,7 +646,7 @@ export default {
             this.currentDate, 1000
         );
         setInterval(
-            this.fetchWeather, 1000
+            this.fetchWeather, 100000
         );
     }
 }

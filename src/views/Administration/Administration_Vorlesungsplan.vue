@@ -1,3 +1,5 @@
+<!---Anmerkung: Eine Speicherfunktion / Bearbeitung des Stundenplans haben wir aufgrund eines CORS-Fehlers nicht umsetzen können. Die Darstellung ist beispielhaft.-->
+
 <template>
     <div class="topBar--admin">
         <div>
