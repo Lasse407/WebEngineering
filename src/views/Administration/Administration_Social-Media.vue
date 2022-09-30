@@ -7,7 +7,7 @@
             <h2> Administration C-Gebäude Infoscreens</h2>
         </div>
         <div class="topBar--logout">
-            <button @click="updateSettings" class="topBar--save">Speichern</button>
+            <button @click="updateSettings()" class="topBar--save">Speichern</button>
         </div>
     </div>
     <div class="bottomBar--admin">
@@ -39,9 +39,8 @@
             <div>
                 <div class="input--header">Twitter-Account verlinken:</div>
                 <div>
-                    <input class="input_twitter" type="text"
-                        placeholder="https://twitter.com/HochschuleFL?s=20&t=c-MXbEZOF8eH1xE9PRXipg"
-                        v-model="twitterLink">
+                    <input class="input_twitter" type="text" placeholder="Twitter-Profil-Link" v-model="twitterLink">
+                    <div class="current--data">Aktuell verlinkt: {{twitterLink}}</div>
                 </div>
             </div>
         </div>
@@ -62,15 +61,17 @@ export default {
     },
 
     methods: {
-        updateSettings() {
-            axios.get('http://127.0.0.1:8000/')
 
+        updateSettings() {
+            axios.get('http://127.0.0.1:8000/api/settings')
         },
+
         fetchSettings() {
             axios.get('http://127.0.0.1:8000/settings/1')
                 .then((response) => {
-                    this.settings = response
-                    this.twitterLink = response.twitter_url
+                    console.log(response)
+                    this.settings = response.settings
+                    this.twitterLink = response.settings.twitter_url
                 })
         }
     },
@@ -99,5 +100,9 @@ export default {
 
 .currentSettings {
     margin-left: 3rem;
+}
+
+.current--data {
+    margin: 2rem 0rem 0rem 3rem;
 }
 </style>

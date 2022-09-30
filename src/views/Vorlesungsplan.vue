@@ -193,7 +193,7 @@ export default {
                 .then((response) => {
                     const eventsWithFormattedDate = response.data.events.map(event => {
                         const item = event;
-                        item.published_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.event_date));
+                        item.event_date = new Intl.DateTimeFormat('de-DE', { datestyle: 'short' }).format(new Date(item.event_date));
                         return item;
                     })
                     this.events = eventsWithFormattedDate;

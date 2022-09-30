@@ -35,7 +35,7 @@
                 <router-link class="admin-link-logout" to="../">Logout</router-link>
             </div>
         </div>
-        <div class="contentBackground--admin">
+        <div class="contentBackground--admin--vl">
             <div class="vl-plan-admin">
                 <div class="table">
                     <div class="table-row table-row--header">
@@ -52,195 +52,162 @@
                             Raum
                         </div>
                     </div>
-                    <div class="table-row">
+                    <div class="table-row" v-for="lecture in lectures" :key="lecture.id">
                         <div class="table-col table-col--20">
-                            <p> 8-10 </p>
+                            <p>{{lecture.start_time}} - {{lecture.end_time}}</p>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name1">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name2">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name3">
+                            <div v-for="lectureName in lecture.lecture_names" :key="lectureName.id">
+                                <select v-model="lectureName.lecture_name">
+                                    <option disabled value="">Please select one</option>
+                                    <option v-for="lecture_name in lecture_names" :key="lecture_name.id">
+                                        {{lecture_name.lecture_name}}</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent1">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent2">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent3">
+                            <div v-for="lectureSpeaker in lecture.speakers" :key="lectureSpeaker.id">
+                                <select v-model="lectureSpeaker.speaker">
+                                    <option disabled value="">Please select one</option>
+                                    <option v-for="speaker in speakers" :key="speaker.id">{{speaker.speaker}}</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room1">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room2">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room3">
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col table-col--20">
-                            <p>10-12</p>
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name4">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name5">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name6">
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent4">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent5">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent6">
-                        </div>
-                        <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room4">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room5">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room6">
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col table-col--20">
-                            <p>12-14</p>
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name7">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name8">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name9">
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent7">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent8">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent9">
-                        </div>
-                        <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room7">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room8">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room9">
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col table-col--20">
-                            <p>14-16</p>
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name10">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name11">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name12">
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent10">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent11">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent11">
-                        </div>
-                        <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room10">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room11">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room12">
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col table-col--20">
-                            <p>16-18</p>
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name13">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name14">
-                            <input type="text" placeholder="Name der Veranstaltung" class="input--table"
-                                vue-model="vlPlan.name15">
-                        </div>
-                        <div class="table-col table-col--30">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent13">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent14">
-                            <input type="text" placeholder="Dozent" class="input--table" vue-model="vlPlan.docent15">
-                        </div>
-                        <div class="table-col table-col--20">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room13">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room14">
-                            <input type="number" placeholder="Raum" class="input--table" vue-model="vlPlan.room15">
+                            <input type="number" placeholder="Raum" class="input--table">
                         </div>
                     </div>
                 </div>
             </div>
+            <button @click="updateLectures">Submit</button>
+            <div class="input--container">
+                <div>Dozent erstellen
+                    <input type="text" placeholder="Name des Dozenten" class="input--categorie" v-model="speakerName">
+                    <button @click="createSpeaker"
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                </div>
+                <div>Raum erstellen
+                    <input type="text" placeholder="Raumnummer" class="input--categorie" v-model="roomNumber">
+                    <button @click="createRoom"
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                </div>
+                <div>Veranstaltung erstellen
+                    <input type="text" placeholder="Veranstaltungsname" class="input--categorie" v-model="lectureName">
+                    <button @click="createLectureName"
+                        style="height:3rem;width:8rem;border-radius: 2rem; border-width: 0rem; background-color: #262481; color:white">Submit</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            vlPlan: {
-                name1: '',
-                docent1: '',
-                room1: '',
-
-                name2: '',
-                docent2: '',
-                room2: '',
-
-                name3: '',
-                docent3: '',
-                room3: '',
-
-                name4: '',
-                docent4: '',
-                room4: '',
-
-                name5: '',
-                docent5: '',
-                room5: '',
-
-                name6: '',
-                docent6: '',
-                room6: '',
-
-                name7: '',
-                docent7: '',
-                room7: '',
-
-                name8: '',
-                docent8: '',
-                room8: '',
-
-                name9: '',
-                docent9: '',
-                room9: '',
-
-                name10: '',
-                docent10: '',
-                room10: '',
-
-                name11: '',
-                docent11: '',
-                room11: '',
-
-                name12: '',
-                docent12: '',
-                room12: '',
-
-                name13: '',
-                docent13: '',
-                room13: '',
-
-                name14: '',
-                docent14: '',
-                room14: '',
-
-                name15: '',
-                docent15: '',
-                room15: '',
-            },
+            rooms: [],
+            lectureNames: [],
+            speakers: [],
+            lectures: [],
+            speakerName: '',
+            roomNumber: '',
+            lectureName: '',
         }
+    },
+
+    methods: {
+        fetchLectures() {
+            axios.get('http://127.0.0.1:8000/api/lectures')
+                .then((response) => {
+                    console.log(response.data);
+                    this.lectures = response.data.data;
+                })
+
+            /*
+            const date = new Date('2023-12-12 08:00:00');
+            date.getHours()
+
+            const date = new Date('2023-12-12 08:00:00');
+            const hours = date.getHours();
+            */
+
+
+        },
+
+        fetchSpeakers() {
+            axios.get('http://127.0.0.1:8000/api/speakers')
+                .then((response) => {
+                    console.log(response.data);
+                    this.speakers = response.data.speakers;
+                })
+        },
+
+        updateLectures() {
+            this.lectures.forEach((lecture) => {
+                axios.put(`http://127.0.0.1:8000/api/lectures/${lecture.id}`, {
+                    withCredentials: true,
+                    data: {
+                        speakers: JSON.stringify(this.speakers),
+                    }
+
+                })
+                    .then((response) => {
+                        console.log(response)
+                    })
+            })
+        },
+
+        createSpeaker() {
+            axios.post('http://127.0.0.1:8000/api/speakers', {
+                speaker: this.speakerName
+            })
+                .then(() => {
+                    alert('test');
+                })
+        },
+
+        createRoom() {
+            const rooms = [
+                {
+                    title: '122'
+                },
+                {
+                    title: '123'
+                },
+                {
+                    title: '124'
+                }
+            ]
+            axios.post('url', { rooms, title: '124' })
+        },
+
+        createLectureName() {
+            const lectureNames = [
+                {
+                    lecture_name: 'Web Engineering'
+                },
+                {
+                    lecture_name: 'Software Engineering'
+                },
+                {
+                    lecture_name: 'Basic Programming'
+                }
+            ]
+            axios.post('url', { lectureNames, lecture_name: 'Web Engineering' })
+        },
+
+    },
+
+    created() {
+        this.fetchSpeakers();
+        this.fetchLectures();
     }
+
 }
 </script>
 
@@ -254,11 +221,21 @@ export default {
     height: 3rem;
 }
 
+.input--container {
+    margin: 1rem 0rem;
+    background-color: #cfcfcf;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.input--categorie {
+    margin: 1rem 2rem;
+}
+
 .vl-plan-admin {
     width: 100rem;
-    height: 60rem;
+    height: auto;
     align-self: center;
-    margin-left: 15rem;
     display: flex;
     flex-direction: column;
     background-color: #cfcfcf;
@@ -312,6 +289,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 76rem;
     width: 15%;
     margin: 0rem 1rem 0rem 0rem;
     background-color: white;
@@ -321,10 +299,10 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 7vh;
+    height: 7rem;
     width: 100%;
-    font-size: 25px;
-    border-bottom-width: 2px;
+    font-size: 2rem;
+    border-bottom-width: 0.4rem;
     border-bottom-color: #f3f6f4;
     border-bottom-style: solid;
 }
@@ -337,10 +315,10 @@ h2 {
 .sidebar--content--loginInfo {
     border-style: solid;
     border-color: grey;
-    border-bottom-width: 2px;
+    border-bottom-width: 0.1rem;
 
-    margin-top: 10px;
-    padding-bottom: 15px;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
     line-height: 1.5rem;
     text-align: center;
 }
@@ -348,6 +326,13 @@ h2 {
 .contentBackground--admin {
     display: flex;
     width: 95%;
+}
+
+.contentBackground--admin--vl {
+    display: flex;
+    margin: 5rem;
+    flex-direction: column;
+    margin-left: 0rem;
 }
 
 .admin-link-logout {
